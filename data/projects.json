@@ -1,0 +1,44 @@
+[
+  {
+    "name": "Tom the AI",
+    "description": "An AI assistant tool built with JavaScript.",
+    "url": "https://math12393.codeberg.page/Tom-The-Ai-Download/",
+    "color": "#FF6B6B"
+  },
+  {
+    "name": "IPA Signer / Editor",
+    "description": "Sign and edit iOS IPA files directly in the browser.",
+    "url": "https://math12393.codeberg.page/IPA-SIGNER-WEN/",
+    "color": "#4ECDC4"
+  },
+  {
+    "name": "OMNI Encoder",
+    "description": "Maximum tools with Base64 encoding and utilities.",
+    "url": "https://math12393.codeberg.page/OMNI-ENCODER/",
+    "color": "#45B7D1"
+  },
+  {
+    "name": "Universal Extractor",
+    "description": "Extract and edit any file type in the browser.",
+    "url": "https://math12393.codeberg.page/Universal-Extractor/",
+    "color": "#F7DC6F"
+  },
+  {
+    "name": "NEXUS Architect",
+    "description": "Generate README, LICENSE, and other project files.",
+    "url": "https://math12393.codeberg.page/Nexus-Architect/",
+    "color": "#BB8FCE"
+  },
+  {
+    "name": "AI Website Maker",
+    "description": "Paste HTML and see a live preview instantly.",
+    "url": "https://math12393.codeberg.page/Ai-Website-Maker/",
+    "color": "#85C1E9"
+  },
+  {
+    "name": "Global Chat",
+    "description": "Real‑time anonymous global chat app.",
+    "url": "https://math12393.codeberg.page/global-chat/",
+    "color": "#F8C471"
+  }
+]
