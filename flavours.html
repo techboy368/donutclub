@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Donut Flavours – Donut Club</title>
+  <meta name="description" content="Browse 30 delicious donut flavours, filter by glaze, filling, and more.">
+  <link rel="icon" href="public/images/favicon.ico">
+  <meta property="og:image" content="public/images/og-image.png">
+  <link rel="stylesheet" href="css/style.css">
+  <link id="theme-style" rel="stylesheet" href="css/theme-light.css">
+  <script defer src="js/main.js"></script>
+  <script defer src="js/navigation.js"></script>
+  <script defer src="js/donutData.js"></script>
+  <script defer src="js/donutFilter.js"></script>
+  <script defer src="js/themeSwitcher.js"></script>
+</head>
+<body>
+  <header class="header">
+    <div class="container header__inner">
+      <a href="index.html" class="logo">
+        <img src="public/images/logo.png" alt="Donut Club logo" width="50" height="50">
+        <span class="site-title">Donut Club</span>
+      </a>
+      <nav class="nav" id="nav">
+        <ul class="nav__list">
+          <li><a href="index.html" class="nav__link">Home</a></li>
+          <li><a href="flavours.html" class="nav__link active">Flavours</a></li>
+          <li><a href="events.html" class="nav__link">Events</a></li>
+          <li><a href="gallery.html" class="nav__link">Gallery</a></li>
+          <li><a href="projects.html" class="nav__link">Projects</a></li>
+          <li><a href="status.html" class="nav__link">Status</a></li>
+          <li><a href="global-chat.html" class="nav__link">Global Chat</a></li>
+          <li><a href="about.html" class="nav__link">About</a></li>
+          <li><a href="join.html" class="nav__link">Join</a></li>
+          <li><a href="contact.html" class="nav__link">Contact</a></li>
+        </ul>
+        <button class="nav__toggle" id="nav-toggle" aria-label="Toggle menu">
+          <span></span><span></span><span></span>
+        </button>
+      </nav>
+      <div class="theme-switcher">
+        <label for="theme-select" class="visually-hidden">Choose theme</label>
+        <select id="theme-select">
+          <option value="light">Light</option>
+          <option value="dark">Dark</option>
+          <option value="galaxy">Galaxy</option>
+          <option value="neon">Neon</option>
+          <option value="pastel">Pastel</option>
+        </select>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="flavours container">
+      <h1>🍩 Donut Flavours</h1>
+      <p>Filter through our 30 favourite donut creations. Click a card for more details.</p>
+
+      <!-- Filter buttons -->
+      <div class="filter-bar">
+        <button class="filter-btn active" data-filter="all">All</button>
+        <button class="filter-btn" data-filter="glazed">Glazed</button>
+        <button class="filter-btn" data-filter="chocolate">Chocolate</button>
+        <button class="filter-btn" data-filter="filled">Filled</button>
+        <button class="filter-btn" data-filter="sprinkles">Sprinkles</button>
+        <button class="filter-btn" data-filter="maple">Maple</button>
+        <button class="filter-btn" data-filter="special">Special</button>
+      </div>
+
+      <!-- Donut Grid (30 items) -->
+      <div class="donut-grid" id="donut-grid">
+        <!-- 1 -->
+        <div class="donut-card" data-glaze="glazed" data-filling="none">
+          <img src="public/images/donut1.jpg" alt="Classic Glazed">
+          <h3>Classic Glazed</h3>
+          <p>Light and airy with a sweet honey glaze.</p>
+          <a href="flavour-detail.html" class="donut-card__link">View Details</a>
+        </div>
+        <!-- 2 -->
+        <div class="donut-card" data-glaze="chocolate" data-filling="cream">
+          <img src="public/images/donut2.jpg" alt="Chocolate Dream">
+          <h3>Chocolate Dream</h3>
+          <p>Dark chocolate glaze, vanilla cream filling.</p>
+          <a href="flavour-detail.html" class="donut-card__link">View Details</a>
+        </div>
+        <!-- 3 -->
+        <div class="donut-card" data-glaze="sprinkles" data-filling="none">
+          <img src="public/images/donut3.jpg" alt="Rainbow Sprinkle">
+          <h3>Rainbow Sprinkle</h3>
+          <p>Vanilla icing with colourful rainbow sprinkles.</p>
+          <a href="flavour-detail.html" class="donut-card__link">View Details</a>
+        </div>
+        <!-- 4 -->
+        <div class="donut-card" data-glaze="maple" data-filling="none">
+          <img src="public/images/donut4.jpg" alt="Maple Dip">
+          <h3>Maple Dip</h3>
+          <p>Canadian maple frosting on a cake donut.</p>
+          <a href="flavour-detail.html" class="donut-card__link">View Details</a>
+        </div>
+        <!-- 5 -->
+        <div class="donut-card" data-glaze="filled" data-filling="jam">
+          <img src="public/images/donut5.jpg" alt="Raspberry Jam">
+          <h3>Raspberry Jam</h3>
+          <p>Powdered sugar outside, raspberry jam inside.</p>
+          <a href="flavour-detail.html" class="donut-card__link">View Details</a>
+        </div>
+        <!-- 6 -->
+        <div class="donut-card" data-glaze="chocolate" data-filling="custard">
+          <img src="public/images/donut6.jpg" alt="Chocolate Custard">
+          <h3>Chocolate Custard</h3>
+          <p>Rich chocolate glaze filled with creamy custard.</p>
+          <a href="flavour-detail.html" class="donut-card__link">View Details</a>
+        </div>
+        <!-- 7 -->
+        <div class="donut-card" data-glaze="glazed" data-filling="none">
+          <img src="public/images/donut7.jpg" alt="Honey Dip">
+          <h3>Honey Dip</h3>
+          <p>Glazed with real Canadian honey.</p>
+          <a href="flavour-detail.html" class="donut-card__link">View Details</a>
+        </div>
+        <!-- 8 -->
+        <div class="donut-card" data-glaze="special" data-filling="none">
+          <img src="public/images/donut8.jpg" alt="Matcha Madness">
+          <h3>Matcha Madness</h3>
+          <p>Green tea icing with a hint of white chocolate.</p>
+          <a href="flavour-detail.html" class="donut-card__link">View Details</a>
+        </div>
+        <!-- 9 -->
+        <div class="donut-card" data-glaze="sprinkles" data-filling="none">
+          <img src="public/images/donut9.jpg" alt="Unicorn Sprinkles">
+          <h3>Unicorn Sprinkles</h3>
+          <p>Pink icing with star-shaped sprinkles.</p>
+          <a href="flavour-detail.html" class="donut-card__link">View Details</a>
+        </div>
+        <!-- 10 -->
+        <div class="donut-card" data-glaze="filled" data-filling="cream">
+          <img src="public/images/donut10.jpg" alt="Boston Cream">
+          <h3>Boston Cream</h3>
+          <p>Chocolate top, vanilla cream, classic style.</p>
+          <a href="flavour-detail.html" class="donut-card__link">View Details</a>
+        </div>
+        <!-- 11 -->
+        <div class="donut-card" data-glaze="maple" data-filling="none">
+          <img src="public/images/donut11.jpg" alt="Maple Bacon">
+          <h3>Maple Bacon</h3>
+          <p>Maple icing with crispy bacon bits.</p>
+          <a href="flavour-detail.html" class="donut-card__link">View Details</a>
+        </div>
+        <!-- 12 -->
+        <div class="donut-card" data-glaze="special" data-filling="lemon">
+          <img src="public/images/donut12.jpg" alt="Lemon Burst">
+          <h3>Lemon Burst</h3>
+          <p>Tangy lemon curd filling with powdered sugar.</p>
+          <a href="flavour-detail.html" class="donut-card__link">View Details</a>
+        </div>
+        <!-- 13 -->
+        <div class="donut-card" data-glaze="chocolate" data-filling="peanut butter">
+          <img src="public/images/donut13.jpg" alt="Peanut Butter Cup">
+          <h3>Peanut Butter Cup</h3>
+          <p>Chocolate cake donut with peanut butter filling.</p>
+          <a href="flavour-detail.html" class="donut-card__link">View Details</a>
+        </div>
+        <!-- 14 -->
+        <div class="donut-card" data-glaze="glazed" data-filling="none">
+          <img src="public/images/donut14.jpg" alt="Vanilla Bean">
+          <h3>Vanilla Bean</h3>
+          <p>Vanilla bean glaze with a soft crumb.</p>
+          <a href="flavour-detail.html" class="donut-card__link">View Details</a>
+        </div>
+        <!-- 15 -->
+        <div class="donut-card" data-glaze="sprinkles" data-filling="none">
+          <img src="public/images/donut15.jpg" alt="Confetti Cake">
+          <h3>Confetti Cake</h3>
+          <p>Cake donut with confetti sprinkles inside and out.</p>
+          <a href="flavour-detail.html" class="donut-card__link">View Details</a>
+        </div>
+        <!-- 16 -->
+        <div class="donut-card" data-glaze="filled" data-filling="apple">
+          <img src="public/images/donut16.jpg" alt="Apple Fritter">
+          <h3>Apple Fritter</h3>
+          <p>Cinnamon apple chunks fried to perfection.</p>
+          <a href="flavour-detail.html" class="donut-card__link">View Details</a>
+        </div>
+        <!-- 17 -->
+        <div class="donut-card" data-glaze="special" data-filling="none">
+          <img src="public/images/donut17.jpg" alt="Churro Donut">
+          <h3>Churro Donut</h3>
+          <p>Cinnamon sugar coating, crispy outside, soft inside.</p>
+          <a href="flavour-detail.html" class="donut-card__link">View Details</a>
+        </div>
+        <!-- 18 -->
+        <div class="donut-card" data-glaze="chocolate" data-filling="none">
+          <img src="public/images/donut18.jpg" alt="Double Chocolate">
+          <h3>Double Chocolate</h3>
+          <p>Chocolate cake donut with chocolate ganache.</p>
+          <a href="flavour-detail.html" class="donut-card__link">View Details</a>
+        </div>
+        <!-- 19 -->
+        <div class="donut-card" data-glaze="maple" data-filling="none">
+          <img src="public/images/donut19.jpg" alt="Maple Pecan">
+          <h3>Maple Pecan</h3>
+          <p>Maple icing topped with crunchy pecans.</p>
+          <a href="flavour-detail.html" class="donut-card__link">View Details</a>
+        </div>
+        <!-- 20 -->
+        <div class="donut-card" data-glaze="filled" data-filling="custard">
+          <img src="public/images/donut20.jpg" alt="Vanilla Custard">
+          <h3>Vanilla Custard</h3>
+          <p>Soft yeast donut with smooth vanilla custard.</p>
+          <a href="flavour-detail.html" class="donut-card__link">View Details</a>
+        </div>
+        <!-- 21 -->
+        <div class="donut-card" data-glaze="special" data-filling="none">
+          <img src="public/images/donut21.jpg" alt="Red Velvet">
+          <h3>Red Velvet</h3>
+          <p>Red velvet cake donut with cream cheese frosting.</p>
+          <a href="flavour-detail.html" class="donut-card__link">View Details</a>
+        </div>
+        <!-- 22 -->
+        <div class="donut-card" data-glaze="glazed" data-filling="none">
+          <img src="public/images/donut22.jpg" alt="Strawberry Glaze">
+          <h3>Strawberry Glaze</h3>
+          <p>Real strawberry purée in the glaze.</p>
+          <a href="flavour-detail.html" class="donut-card__link">View Details</a>
+        </div>
+        <!-- 23 -->
+        <div class="donut-card" data-glaze="sprinkles" data-filling="none">
+          <img src="public/images/donut23.jpg" alt="Cotton Candy">
+          <h3>Cotton Candy</h3>
+          <p>Cotton candy flavoured icing with blue sprinkles.</p>
+          <a href="flavour-detail.html" class="donut-card__link">View Details</a>
+        </div>
+        <!-- 24 -->
+        <div class="donut-card" data-glaze="chocolate" data-filling="marshmallow">
+          <img src="public/images/donut24.jpg" alt="S'mores">
+          <h3>S'mores</h3>
+          <p>Chocolate glaze, graham cracker crumbs, marshmallow filling.</p>
+          <a href="flavour-detail.html" class="donut-card__link">View Details</a>
+        </div>
+        <!-- 25 -->
+        <div class="donut-card" data-glaze="filled" data-filling="blueberry">
+          <img src="public/images/donut25.jpg" alt="Blueberry Bliss">
+          <h3>Blueberry Bliss</h3>
+          <p>Glazed donut filled with wild blueberry jam.</p>
+          <a href="flavour-detail.html" class="donut-card__link">View Details</a>
+        </div>
+        <!-- 26 -->
+        <div class="donut-card" data-glaze="special" data-filling="none">
+          <img src="public/images/donut26.jpg" alt="Pumpkin Spice">
+          <h3>Pumpkin Spice</h3>
+          <p>Seasonal pumpkin cake with spiced glaze.</p>
+          <a href="flavour-detail.html" class="donut-card__link">View Details</a>
+        </div>
+        <!-- 27 -->
+        <div class="donut-card" data-glaze="maple" data-filling="none">
+          <img src="public/images/donut27.jpg" alt="Maple Crème">
+          <h3>Maple Crème</h3>
+          <p>Maple icing with a swirl of maple cream.</p>
+          <a href="flavour-detail.html" class="donut-card__link">View Details</a>
+        </div>
+        <!-- 28 -->
+        <div class="donut-card" data-glaze="glazed" data-filling="none">
+          <img src="public/images/donut28.jpg" alt="Brown Butter Glaze">
+          <h3>Brown Butter Glaze</h3>
+          <p>Nutty brown butter glaze on a yeast donut.</p>
+          <a href="flavour-detail.html" class="donut-card__link">View Details</a>
+        </div>
+        <!-- 29 -->
+        <div class="donut-card" data-glaze="chocolate" data-filling="cherry">
+          <img src="public/images/donut29.jpg" alt="Black Forest">
+          <h3>Black Forest</h3>
+          <p>Chocolate donut with cherry filling and cream.</p>
+          <a href="flavour-detail.html" class="donut-card__link">View Details</a>
+        </div>
+        <!-- 30 -->
+        <div class="donut-card" data-glaze="special" data-filling="none">
+          <img src="public/images/donut30.jpg" alt="Crème Brûlée">
+          <h3>Crème Brûlée</h3>
+          <p>Caramelized sugar top, vanilla custard inside.</p>
+          <a href="flavour-detail.html" class="donut-card__link">View Details</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer__inner">
+      <p>&copy; 2025 Donut Club — Made with 🍩 & code by <strong>Wen Zhang</strong></p>
+      <div class="footer__links">
+        <a href="https://discord.gg/QbgUFz6GaU" target="_blank">Discord</a>
+        <a href="https://github.com/techboy368/donutclub" target="_blank">GitHub</a>
+        <a href="https://codeberg.org/Math12393" target="_blank">Codeberg</a>
+        <a href="mailto:wen471942@gmail.com">Email</a>
+        <a href="privacy.html">Privacy</a>
+        <a href="terms.html">Terms</a>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
