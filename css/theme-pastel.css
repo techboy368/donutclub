@@ -1,0 +1,26 @@
+/* ============================================================
+   THEME: PASTEL (soft and sweet)
+   ============================================================ */
+
+:root {
+  --color-bg: #fef9f4;
+  --color-text: #5d534b;
+  --color-text-muted: #8b8078;
+  --color-heading: #a67c6c;
+  --color-primary: #f4aab9;
+  --color-primary-dark: #e89aaa;
+  --color-primary-light: #fff0f3;
+  --color-link: #c9a0dc;
+  --color-link-underline: rgba(201,160,220,0.4);
+  --color-link-hover: #b48cc9;
+  --color-focus: #f4aab9;
+  --color-header-bg: #ffe8e0;
+  --color-footer-bg: #edd5c8;
+  --color-card-bg: #ffffff;
+  --color-alt-bg: #fff5ee;
+  --color-dark-section-bg: #fae1dd;
+  --color-hero-bg: #ffede4;
+  --color-border: #e6d5c9;
+  --color-input-bg: #fffefc;
+  --color-code-bg: #faf5f0;
+}
