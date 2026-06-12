@@ -1,0 +1,24 @@
+/* ============================================================
+   DARK MODE FALLBACK (if no theme selected)
+   Applied only if user prefers dark mode at system level
+   ============================================================ */
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-bg: #121212;
+    --color-text: #e0e0e0;
+    --color-heading: #ffffff;
+    --color-primary: #ff4081;
+    --color-primary-dark: #c2185b;
+    --color-primary-light: #333;
+    --color-link: #ff80ab;
+    --color-link-hover: #ff4081;
+    --color-header-bg: #1e1e1e;
+    --color-footer-bg: #0a0a0a;
+    --color-card-bg: #1e1e1e;
+    --color-alt-bg: #181818;
+    --color-dark-section-bg: #252525;
+    --color-border: #333;
+    --color-input-bg: #2c2c2c;
+  }
+}
