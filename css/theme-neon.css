@@ -1,0 +1,26 @@
+/* ============================================================
+   THEME: NEON (bright lights on dark)
+   ============================================================ */
+
+:root {
+  --color-bg: #0a0a0a;
+  --color-text: #f0f0f0;
+  --color-text-muted: #aaaaaa;
+  --color-heading: #00ffcc;
+  --color-primary: #ff00ff;
+  --color-primary-dark: #cc00cc;
+  --color-primary-light: #3a0a3a;
+  --color-link: #00ffff;
+  --color-link-underline: rgba(0,255,255,0.4);
+  --color-link-hover: #00cccc;
+  --color-focus: #ff00ff;
+  --color-header-bg: #111111;
+  --color-footer-bg: #000000;
+  --color-card-bg: #1a1a1a;
+  --color-alt-bg: #0d0d0d;
+  --color-dark-section-bg: #1a1a2a;
+  --color-hero-bg: #1a0020;
+  --color-border: #444444;
+  --color-input-bg: #222222;
+  --color-code-bg: #181818;
+}
