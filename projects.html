@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Projects – Wen Zhang | Donut Club</title>
+  <meta name="description" content="All coding projects by Wen Zhang: Tom the AI, IPA Signer, OMNI Encoder, Universal Extractor, NEXUS Architect, AI Website Maker, and more.">
+  <link rel="icon" href="public/images/favicon.ico">
+  <meta property="og:image" content="public/images/og-image.png">
+  <link rel="stylesheet" href="css/style.css">
+  <link id="theme-style" rel="stylesheet" href="css/theme-light.css">
+  <script defer src="js/main.js"></script>
+  <script defer src="js/navigation.js"></script>
+  <script defer src="js/themeSwitcher.js"></script>
+</head>
+<body>
+  <header class="header">
+    <div class="container header__inner">
+      <a href="index.html" class="logo">
+        <img src="public/images/logo.png" alt="Donut Club logo" width="50" height="50">
+        <span class="site-title">Donut Club</span>
+      </a>
+      <nav class="nav" id="nav">
+        <ul class="nav__list">
+          <li><a href="index.html" class="nav__link">Home</a></li>
+          <li><a href="flavours.html" class="nav__link">Flavours</a></li>
+          <li><a href="events.html" class="nav__link">Events</a></li>
+          <li><a href="gallery.html" class="nav__link">Gallery</a></li>
+          <li><a href="projects.html" class="nav__link active">Projects</a></li>
+          <li><a href="status.html" class="nav__link">Status</a></li>
+          <li><a href="global-chat.html" class="nav__link">Global Chat</a></li>
+          <li><a href="about.html" class="nav__link">About</a></li>
+          <li><a href="join.html" class="nav__link">Join</a></li>
+          <li><a href="contact.html" class="nav__link">Contact</a></li>
+        </ul>
+        <button class="nav__toggle" id="nav-toggle" aria-label="Toggle menu">
+          <span></span><span></span><span></span>
+        </button>
+      </nav>
+      <div class="theme-switcher">
+        <label for="theme-select" class="visually-hidden">Choose theme</label>
+        <select id="theme-select">
+          <option value="light">Light</option>
+          <option value="dark">Dark</option>
+          <option value="galaxy">Galaxy</option>
+          <option value="neon">Neon</option>
+          <option value="pastel">Pastel</option>
+        </select>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="projects-page container">
+      <h1>🛠️ All Projects by Wen Zhang</h1>
+      <p>Here are the tools and websites I've built. All are free to use and open source (where noted).</p>
+
+      <div class="projects-showcase">
+        <!-- Project 1 -->
+        <div class="project-item">
+          <div class="project-item__thumb" style="background:#FF6B6B;">Tom the AI</div>
+          <h3>Tom the AI</h3>
+          <p>An AI assistant tool that can answer questions, generate text, and help with daily tasks. Built with JavaScript.</p>
+          <a href="https://math12393.codeberg.page/Tom-The-Ai-Download/" target="_blank" class="btn">Visit Project →</a>
+        </div>
+
+        <!-- Project 2 -->
+        <div class="project-item">
+          <div class="project-item__thumb" style="background:#4ECDC4;">IPA Signer</div>
+          <h3>IPA Signer / Editor</h3>
+          <p>Sign and edit iOS IPA files directly in the browser. Supports certificate injection and metadata editing.</p>
+          <a href="https://math12393.codeberg.page/IPA-SIGNER-WEN/" target="_blank" class="btn">Visit Project →</a>
+        </div>
+
+        <!-- Project 3 -->
+        <div class="project-item">
+          <div class="project-item__thumb" style="background:#45B7D1;">OMNI Encoder</div>
+          <h3>OMNI Encoder</h3>
+          <p>Maximum tools with Base64 encoding. Convert text, URLs, and files to Base64 and back. Includes extra utilities.</p>
+          <a href="https://math12393.codeberg.page/OMNI-ENCODER/" target="_blank" class="btn">Visit Project →</a>
+        </div>
+
+        <!-- Project 4 -->
+        <div class="project-item">
+          <div class="project-item__thumb" style="background:#F7DC6F;">Universal Extractor</div>
+          <h3>Universal Extractor</h3>
+          <p>Extract and edit any file type right in the browser. Supports ZIP, RAR, TAR, and many more.</p>
+          <a href="https://math12393.codeberg.page/Universal-Extractor/" target="_blank" class="btn">Visit Project →</a>
+        </div>
+
+        <!-- Project 5 -->
+        <div class="project-item">
+          <div class="project-item__thumb" style="background:#BB8FCE;">NEXUS Architect</div>
+          <h3>NEXUS Architect</h3>
+          <p>Generate project files like README.md, LICENSE, .gitignore, and more with an easy form interface.</p>
+          <a href="https://math12393.codeberg.page/Nexus-Architect/" target="_blank" class="btn">Visit Project →</a>
+        </div>
+
+        <!-- Project 6 -->
+        <div class="project-item">
+          <div class="project-item__thumb" style="background:#85C1E9;">AI Website Maker</div>
+          <h3>AI Website Maker</h3>
+          <p>Paste HTML code and see a live website preview instantly. Great for quick experiments.</p>
+          <a href="https://math12393.codeberg.page/Ai-Website-Maker/" target="_blank" class="btn">Visit Project →</a>
+        </div>
+
+        <!-- Project 7 (Global Chat) -->
+        <div class="project-item">
+          <div class="project-item__thumb" style="background:#F8C471;">Global Chat</div>
+          <h3>Global Chat</h3>
+          <p>A real‑time global chat app. No sign‑up needed – just pick a username and start chatting!</p>
+          <a href="https://math12393.codeberg.page/global-chat/" target="_blank" class="btn">Open Chat →</a>
+          <a href="global-chat.html" class="btn btn--small">Embedded Version</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer__inner">
+      <p>&copy; 2025 Donut Club — Made with 🍩 & code by <strong>Wen Zhang</strong></p>
+      <div class="footer__links">
+        <a href="https://discord.gg/QbgUFz6GaU" target="_blank">Discord</a>
+        <a href="https://github.com/techboy368/donutclub" target="_blank">GitHub</a>
+        <a href="https://codeberg.org/Math12393" target="_blank">Codeberg</a>
+        <a href="mailto:wen471942@gmail.com">Email</a>
+        <a href="privacy.html">Privacy</a>
+        <a href="terms.html">Terms</a>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
