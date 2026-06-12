@@ -1,0 +1,27 @@
+{
+  "name": "donut-club",
+  "version": "1.0.0",
+  "description": "Donut Club website - a sweet community site by Wen Zhang",
+  "main": "index.html",
+  "scripts": {
+    "start": "npx live-server --port=8080",
+    "build": "echo 'No build step – static site'"
+  },
+  "keywords": [
+    "donut",
+    "club",
+    "community",
+    "wen-zhang",
+    "edmonton"
+  ],
+  "author": "Wen Zhang (techboy368 / Math12393)",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/techboy368/donutclub"
+  },
+  "bugs": {
+    "url": "https://github.com/techboy368/donutclub/issues"
+  },
+  "homepage": "https://donutclub.site"
+}
