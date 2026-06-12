@@ -1,0 +1,14 @@
+/* TEAM */
+Creator: Wen Zhang (Wenrui Zhang)
+Site: Donut Club
+From: Edmonton, Canada
+Age: 14
+
+/* SITE */
+Domain: donutclub.site
+GitHub: https://github.com/techboy368/donutclub
+Codeberg: https://codeberg.org/Math12393
+Discord: https://discord.gg/QbgUFz6GaU
+
+/* THANKS */
+To all donut lovers everywhere! 🍩
