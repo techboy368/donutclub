@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About Donut Club</title>
+  <meta name="description" content="Learn about Donut Club and its founder, Wen Zhang, a 14-year-old developer from Edmonton.">
+  <link rel="icon" href="public/images/favicon.ico">
+  <meta property="og:image" content="public/images/og-image.png">
+  <link rel="stylesheet" href="css/style.css">
+  <link id="theme-style" rel="stylesheet" href="css/theme-light.css">
+  <script defer src="js/main.js"></script>
+  <script defer src="js/navigation.js"></script>
+  <script defer src="js/themeSwitcher.js"></script>
+</head>
+<body>
+  <header class="header">
+    <div class="container header__inner">
+      <a href="index.html" class="logo">
+        <img src="public/images/logo.png" alt="Donut Club logo" width="50" height="50">
+        <span class="site-title">Donut Club</span>
+      </a>
+      <nav class="nav" id="nav">
+        <ul class="nav__list">
+          <li><a href="index.html" class="nav__link">Home</a></li>
+          <li><a href="flavours.html" class="nav__link">Flavours</a></li>
+          <li><a href="events.html" class="nav__link">Events</a></li>
+          <li><a href="gallery.html" class="nav__link">Gallery</a></li>
+          <li><a href="projects.html" class="nav__link">Projects</a></li>
+          <li><a href="status.html" class="nav__link">Status</a></li>
+          <li><a href="global-chat.html" class="nav__link">Global Chat</a></li>
+          <li><a href="about.html" class="nav__link active">About</a></li>
+          <li><a href="join.html" class="nav__link">Join</a></li>
+          <li><a href="contact.html" class="nav__link">Contact</a></li>
+        </ul>
+        <button class="nav__toggle" id="nav-toggle" aria-label="Toggle menu">
+          <span></span><span></span><span></span>
+        </button>
+      </nav>
+      <div class="theme-switcher">
+        <label for="theme-select" class="visually-hidden">Choose theme</label>
+        <select id="theme-select">
+          <option value="light">Light</option>
+          <option value="dark">Dark</option>
+          <option value="galaxy">Galaxy</option>
+          <option value="neon">Neon</option>
+          <option value="pastel">Pastel</option>
+        </select>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="about container">
+      <h1>About Donut Club</h1>
+      <img src="public/images/about-banner.jpg" alt="Donuts spread" class="about-banner">
+      
+      <h2>Our Story</h2>
+      <p>Donut Club started as a joke between Wen Zhang and his friends in 2024. While debugging a Python script at 2 AM, Wen grabbed a donut and thought: "What if there was a club for people who love donuts and code as much as I do?" A few Discord messages later, the Donut Club server was born.</p>
+      <p>Today, Donut Club has members from over 15 countries. We host monthly donut tastings, coding workshops, game nights, and an annual "DonutCon" virtual convention. We believe that sugar and software make a perfect pair.</p>
+
+      <h2>Meet the Founder</h2>
+      <div class="founder-card">
+        <img src="public/images/logo.png" alt="Wen Zhang" class="founder-card__avatar">
+        <div class="founder-card__info">
+          <h3>Wen Zhang</h3>
+          <p><strong>Real Name:</strong> Wenrui Zhang</p>
+          <p><strong>Age:</strong> 14</p>
+          <p><strong>Location:</strong> Edmonton, Alberta, Canada</p>
+          <p><strong>Skills:</strong> HTML, CSS, JavaScript, Python, C++, and more</p>
+          <p><strong>GitHub:</strong> <a href="https://github.com/techboy368" target="_blank">techboy368</a></p>
+          <p><strong>Codeberg:</strong> <a href="https://codeberg.org/Math12393" target="_blank">Math12393</a></p>
+          <p><strong>Email:</strong> <a href="mailto:wen471942@gmail.com">wen471942@gmail.com</a></p>
+          <p>Wen is a self‑taught developer who started coding at age 10. He loves building useful tools and sharing them with the world. When he's not coding, you'll find him trying new donut shops around Edmonton or playing Minecraft.</p>
+          <a href="who-we-are.html" class="btn">More About Wen →</a>
+        </div>
+      </div>
+
+      <h2>Our Mission</h2>
+      <ul>
+        <li>Spread joy through donuts 🍩</li>
+        <li>Make technology fun and accessible</li>
+        <li>Create a safe, welcoming space for everyone</li>
+        <li>Inspire young coders to build their own projects</li>
+      </ul>
+
+      <h2>Club Stats</h2>
+      <div class="stats-grid">
+        <div class="stat"><span class="stat__number">500+</span> Members</div>
+        <div class="stat"><span class="stat__number">15+</span> Countries</div>
+        <div class="stat"><span class="stat__number">30</span> Donut Reviews</div>
+        <div class="stat"><span class="stat__number">12</span> Events</div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer__inner">
+      <p>&copy; 2025 Donut Club — Made with 🍩 & code by <strong>Wen Zhang</strong></p>
+      <div class="footer__links">
+        <a href="https://discord.gg/QbgUFz6GaU" target="_blank">Discord</a>
+        <a href="https://github.com/techboy368/donutclub" target="_blank">GitHub</a>
+        <a href="https://codeberg.org/Math12393" target="_blank">Codeberg</a>
+        <a href="mailto:wen471942@gmail.com">Email</a>
+        <a href="privacy.html">Privacy</a>
+        <a href="terms.html">Terms</a>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
