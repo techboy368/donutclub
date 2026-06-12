@@ -1,4 +1,166 @@
-My website, By Wen
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Donut Club – Home</title>
+  <meta name="description" content="Welcome to Donut Club, the sweetest community by Wen Zhang. Join us for donuts, code, and fun!">
+  <link rel="icon" href="public/images/favicon.ico" type="image/x-icon">
+  <meta property="og:image" content="public/images/og-image.png">
+  <link rel="stylesheet" href="css/style.css">
+  <link id="theme-style" rel="stylesheet" href="css/theme-light.css">
+  <script defer src="js/main.js"></script>
+  <script defer src="js/navigation.js"></script>
+  <script defer src="js/sprinkles.js"></script>
+  <script defer src="js/eventCountdown.js"></script>
+  <script defer src="js/themeSwitcher.js"></script>
+</head>
+<body>
+  <header class="header">
+    <div class="container header__inner">
+      <a href="index.html" class="logo">
+        <img src="public/images/logo.png" alt="Donut Club logo" width="50" height="50">
+        <span class="site-title">Donut Club</span>
+      </a>
+      <nav class="nav" id="nav">
+        <ul class="nav__list">
+          <li><a href="index.html" class="nav__link active">Home</a></li>
+          <li><a href="flavours.html" class="nav__link">Flavours</a></li>
+          <li><a href="events.html" class="nav__link">Events</a></li>
+          <li><a href="gallery.html" class="nav__link">Gallery</a></li>
+          <li><a href="projects.html" class="nav__link">Projects</a></li>
+          <li><a href="status.html" class="nav__link">Status</a></li>
+          <li><a href="global-chat.html" class="nav__link">Global Chat</a></li>
+          <li><a href="about.html" class="nav__link">About</a></li>
+          <li><a href="join.html" class="nav__link">Join</a></li>
+          <li><a href="contact.html" class="nav__link">Contact</a></li>
+        </ul>
+        <button class="nav__toggle" id="nav-toggle" aria-label="Toggle menu">
+          <span></span><span></span><span></span>
+        </button>
+      </nav>
+      <div class="theme-switcher">
+        <label for="theme-select" class="visually-hidden">Choose theme</label>
+        <select id="theme-select">
+          <option value="light">Light</option>
+          <option value="dark">Dark</option>
+          <option value="galaxy">Galaxy</option>
+          <option value="neon">Neon</option>
+          <option value="pastel">Pastel</option>
+        </select>
+      </div>
+    </div>
+  </header>
 
+  <main>
+    <!-- Hero Section -->
+    <section class="hero" id="hero">
+      <div class="hero__content container">
+        <h1>Welcome to <span class="highlight">Donut Club</span></h1>
+        <p class="hero__lead">The sweetest community on the web — donuts, code, and friendship since 2024.</p>
+        <div class="hero__buttons">
+          <a href="join.html" class="btn btn--primary">Become a Member 🍩</a>
+          <a href="flavours.html" class="btn btn--secondary">Explore Flavours</a>
+        </div>
+      </div>
+      <canvas id="sprinkles-canvas" class="hero__canvas"></canvas>
+    </section>
 
-<p> <a href="https://math12393.codeberg.page/Tom-The-AI-Plus-Wen/"> Website </a> </p>
+    <!-- What is Donut Club -->
+    <section class="section container">
+      <h2 class="section__title">What is Donut Club?</h2>
+      <div class="about-preview">
+        <img src="public/images/about-banner.jpg" alt="Assorted donuts" class="about-preview__img">
+        <div>
+          <p>Donut Club is a worldwide community of donut lovers and tech enthusiasts, founded by <strong>Wen Zhang</strong> (14, Edmonton, Canada). We host virtual events, share donut reviews, and build awesome coding projects together.</p>
+          <p>Whether you're here for the sprinkles or the scripts, there's a place for you at the club.</p>
+          <a href="about.html" class="btn">Learn More About Us</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Upcoming Events -->
+    <section class="section section--alt container">
+      <h2 class="section__title">Upcoming Events</h2>
+      <div class="events-grid">
+        <article class="event-card">
+          <div class="event-card__date">May 15</div>
+          <h3>Monthly Donut Tasting 🍩</h3>
+          <p>Virtual meetup – bring your favorite donut and tell us why it's the best!</p>
+        </article>
+        <article class="event-card">
+          <div class="event-card__date">May 30</div>
+          <h3>Code & Donuts Hackathon 💻</h3>
+          <p>24-hour online hackathon. Theme: "Sweet Solutions". All skill levels welcome.</p>
+        </article>
+        <article class="event-card">
+          <div class="event-card__date">Jun 7</div>
+          <h3>Donut Art Contest 🎨</h3>
+          <p>Draw, paint, or digitally create a donut masterpiece. Prizes for best entries!</p>
+        </article>
+      </div>
+      <div id="countdown" class="countdown">Loading next event countdown...</div>
+      <a href="events.html" class="btn">View All Events</a>
+    </section>
+
+    <!-- Quick Links to Projects -->
+    <section class="section container">
+      <h2 class="section__title">My Other Projects</h2>
+      <div class="projects-grid">
+        <a href="https://math12393.codeberg.page/Tom-The-Ai-Download/" target="_blank" class="project-card">
+          <div class="project-card__thumb" style="background:#FF6B6B;">Tom the AI</div>
+          <h4>Tom the AI</h4>
+        </a>
+        <a href="https://math12393.codeberg.page/IPA-SIGNER-WEN/" target="_blank" class="project-card">
+          <div class="project-card__thumb" style="background:#4ECDC4;">IPA Signer</div>
+          <h4>IPA Signer</h4>
+        </a>
+        <a href="https://math12393.codeberg.page/OMNI-ENCODER/" target="_blank" class="project-card">
+          <div class="project-card__thumb" style="background:#45B7D1;">OMNI Encoder</div>
+          <h4>OMNI Encoder</h4>
+        </a>
+        <a href="https://math12393.codeberg.page/Universal-Extractor/" target="_blank" class="project-card">
+          <div class="project-card__thumb" style="background:#F7DC6F;">Universal Extractor</div>
+          <h4>Universal Extractor</h4>
+        </a>
+        <a href="https://math12393.codeberg.page/Nexus-Architect/" target="_blank" class="project-card">
+          <div class="project-card__thumb" style="background:#BB8FCE;">NEXUS Architect</div>
+          <h4>NEXUS Architect</h4>
+        </a>
+        <a href="https://math12393.codeberg.page/Ai-Website-Maker/" target="_blank" class="project-card">
+          <div class="project-card__thumb" style="background:#85C1E9;">AI Website Maker</div>
+          <h4>AI Website Maker</h4>
+        </a>
+      </div>
+      <a href="projects.html" class="btn">All Projects →</a>
+    </section>
+
+    <!-- Discord Widget -->
+    <section class="section section--dark container">
+      <h2 class="section__title">Join the Discord</h2>
+      <p>Chat with other members, get event updates, and share donut pics.</p>
+      <a href="https://discord.gg/QbgUFz6GaU" target="_blank" rel="noopener" class="btn btn--discord">
+        🎮 Join Discord Server
+      </a>
+      <div class="discord-preview">
+        <img src="public/images/community-photo.jpg" alt="Discord community">
+        <p>We're 500+ members strong!</p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer__inner">
+      <p>&copy; 2025 Donut Club — Made with 🍩 & code by <strong>Wen Zhang</strong></p>
+      <div class="footer__links">
+        <a href="https://discord.gg/QbgUFz6GaU" target="_blank">Discord</a>
+        <a href="https://github.com/techboy368/donutclub" target="_blank">GitHub</a>
+        <a href="https://codeberg.org/Math12393" target="_blank">Codeberg</a>
+        <a href="mailto:wen471942@gmail.com">Email</a>
+        <a href="privacy.html">Privacy</a>
+        <a href="terms.html">Terms</a>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
