@@ -18,3 +18,27 @@ We'll get back to you as soon as possible.
 ## Scope
 
 This policy covers the Donut Club website hosted at [donutclub.site](https://donutclub.site) and its associated GitHub repository.
+
+Make your changes.
+
+Test locally by opening index.html in a browser.
+
+Commit and push to your fork.
+
+Open a pull request.
+
+Guidelines
+Keep the donut theme alive 🍩
+
+Respect others.
+
+Have fun!
+
+Questions?
+Reach out via:
+
+Discord: Donut Club Server
+
+Email: wen471942@gmail.com
+
+---
