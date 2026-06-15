@@ -42,17 +42,7 @@ The sweetest community on the internet – built by a 14-year-old developer from
 ## 📁 Project Structure
 
 - `index.html` – Home page
-- `about.html`, `who-we-are.html` – About the club & creator
-- `projects.html` – Showcase of all tools
-- `flavours.html` – Donut catalogue
-- `events.html`, `gallery.html` – Community moments
-- `join.html`, `contact.html` – Get involved
-- `faq.html`, `rules.html`, `code-of-conduct.html` – Info
-- `status.html` – Service status dashboard
-- `global-chat.html` – Embedded chat
-- `privacy.html`, `terms.html` – Legal
-- `404.html` – Custom error page
-- `css/`, `js/`, `data/`, `public/` – Assets
+
 
 ---
 
