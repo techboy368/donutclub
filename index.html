@@ -3,482 +3,40 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>🍩 Donut Club </title>
+    <title>🍩 Donut Club</title>
+    <link rel="icon" type="image/x-icon" href="favicon.ico" />
     <style>
-        :root {
-            --bg: #1a1a2e;
-            --card-bg: #16213e;
-            --text: #f0e6d3;
-            --pink: #ff6b9d;
-            --glaze: #f7c5cc;
-            --chocolate: #6b3a2e;
-            --sprinkle-yellow: #ffe259;
-            --sprinkle-blue: #56ccf2;
-            --sprinkle-green: #7bed9f;
-            --sprinkle-purple: #c471ed;
-            --sprinkle-orange: #ff9a56;
-            --sprinkle-white: #ffffff;
-            --card-hover: #1e2d50;
-            --shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
-            --glow-pink: 0 0 40px rgba(255, 107, 157, 0.3);
-            --glow-blue: 0 0 40px rgba(86, 204, 242, 0.25);
-        }
-
+        /* ============ RESET & BASE ============ */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
-
         body {
             font-family: 'Segoe UI', 'Poppins', system-ui, -apple-system, sans-serif;
-            background: var(--bg);
-            color: var(--text);
+            background: #1a1a2e;
+            color: #f0e6d3;
             min-height: 100vh;
             overflow-x: hidden;
             position: relative;
-            cursor: default;
             -webkit-tap-highlight-color: transparent;
             user-select: none;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
         }
-
-        /* ============ ANIMATED BACKGROUND SPRINKLES ============ */
-        #sprinkles-canvas {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            z-index: 0;
-        }
-
-        /* ============ MAIN CONTAINER ============ */
-        .main-container {
-            position: relative;
-            z-index: 1;
-            max-width: 1000px;
-            margin: 0 auto;
-            padding: 30px 20px 60px;
-        }
-
-        /* ============ HEADER ============ */
-        .header {
-            text-align: center;
-            padding: 40px 20px 20px;
-            position: relative;
-        }
-
-        .donut-logo {
-            display: inline-block;
-            position: relative;
-            cursor: pointer;
-            transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
-            animation: floatDonut 3s ease-in-out infinite;
-        }
-
-        .donut-logo:active {
-            transform: scale(0.9);
-        }
-
-        @keyframes floatDonut {
-            0%,
-            100% {
-                transform: translateY(0px);
-            }
-            30% {
-                transform: translateY(-18px);
-            }
-            60% {
-                transform: translateY(-6px);
-            }
-            85% {
-                transform: translateY(-14px);
-            }
-        }
-
-        .donut-logo svg {
-            width: 100px;
-            height: 100px;
-            filter: drop-shadow(0 10px 30px rgba(255, 107, 157, 0.5));
-            transition: filter 0.4s;
-        }
-
-        .donut-logo:hover svg {
-            filter: drop-shadow(0 14px 40px rgba(255, 107, 157, 0.75));
-        }
-
-        /* Frosting drip on the donut SVG */
-        .frosting-drip {
-            animation: dripPulse 2s ease-in-out infinite;
-            transform-origin: top center;
-        }
-        @keyframes dripPulse {
-            0%,
-            100% {
-                d: path('M 35 48 Q 35 52 38 54 Q 41 56 38 60');
-            }
-            50% {
-                d: path('M 35 48 Q 35 52 38 55 Q 41 58 38 63');
-            }
-        }
-
-        .title {
-            font-size: clamp(2.4rem, 6vw, 3.6rem);
-            font-weight: 900;
-            letter-spacing: -1px;
-            background: linear-gradient(135deg, #ff6b9d, #ff9a56, #ff6b9d, #c471ed);
-            background-size: 300% 300%;
-            -webkit-background-clip: text;
-            background-clip: text;
-            -webkit-text-fill-color: transparent;
-            animation: gradientShift 4s ease-in-out infinite;
-            margin-top: 8px;
-        }
-
-        @keyframes gradientShift {
-            0%,
-            100% {
-                background-position: 0% 50%;
-            }
-            25% {
-                background-position: 100% 0%;
-            }
-            50% {
-                background-position: 100% 100%;
-            }
-            75% {
-                background-position: 0% 100%;
-            }
-        }
-
-        .subtitle {
-            font-size: 1.1rem;
-            color: #c9b8a8;
-            margin-top: 4px;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            font-weight: 500;
-        }
-
-        .tagline {
-            font-size: 0.9rem;
-            color: #8a7b6e;
-            margin-top: 6px;
-            font-style: italic;
-        }
-
-        /* ============ CLOCK / GREETING ============ */
-        .greeting-bar {
-            text-align: center;
-            margin: 10px 0 20px;
-            font-size: 1rem;
-            color: #b8a594;
-            letter-spacing: 1px;
-            transition: all 0.5s;
-        }
-        .greeting-bar .time {
-            font-weight: 700;
-            color: #ff6b9d;
-            font-size: 1.3rem;
-        }
-
-        /* ============ SEARCH / FILTER ============ */
-        .search-wrap {
-            display: flex;
-            justify-content: center;
-            margin-bottom: 28px;
-            position: relative;
-            z-index: 2;
-        }
-        .search-input {
-            width: 100%;
-            max-width: 500px;
-            padding: 14px 22px;
-            padding-left: 48px;
-            border-radius: 50px;
-            border: 2px solid rgba(255, 107, 157, 0.35);
-            background: rgba(22, 33, 62, 0.8);
-            backdrop-filter: blur(10px);
-            color: #f0e6d3;
-            font-size: 1rem;
-            letter-spacing: 0.5px;
-            transition: all 0.35s;
-            outline: none;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
-        }
-        .search-input::placeholder {
-            color: #6b5e52;
-            letter-spacing: 1px;
-        }
-        .search-input:focus {
-            border-color: #ff6b9d;
-            box-shadow: 0 0 0 6px rgba(255, 107, 157, 0.1), 0 8px 30px rgba(0, 0, 0, 0.35);
-            background: rgba(30, 45, 80, 0.9);
-        }
-        .search-icon {
-            position: absolute;
-            left: calc(50% - 230px);
-            top: 50%;
-            transform: translateY(-50%);
-            font-size: 1.2rem;
-            pointer-events: none;
-            z-index: 3;
-            color: #8a7b6e;
-            transition: color 0.3s;
-        }
-        @media (max-width: 600px) {
-            .search-icon {
-                left: 28px;
-            }
-            .search-input {
-                padding-left: 44px;
-            }
-        }
-        .search-input:focus~.search-icon,
-        .search-wrap:focus-within .search-icon {
-            color: #ff6b9d;
-        }
-
-        /* ============ PROJECT GRID ============ */
-        .projects-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-            gap: 20px;
-            position: relative;
-            z-index: 1;
-        }
-
-        .project-card {
-            background: var(--card-bg);
-            border-radius: 20px;
-            padding: 24px 22px;
-            cursor: pointer;
-            position: relative;
-            overflow: hidden;
-            border: 1.5px solid rgba(255, 255, 255, 0.06);
-            transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1.2);
-            box-shadow: var(--shadow);
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-            text-decoration: none;
-            color: inherit;
-            -webkit-tap-highlight-color: transparent;
-        }
-
-        .project-card:hover {
-            background: var(--card-hover);
-            border-color: rgba(255, 107, 157, 0.4);
-            transform: translateY(-6px);
-            box-shadow: 0 16px 40px rgba(0, 0, 0, 0.5), var(--glow-pink);
-            z-index: 5;
-        }
-        .project-card:active {
-            transform: scale(0.97);
-            transition: transform 0.15s;
-        }
-
-        /* Sprinkle accent on card */
-        .project-card::before {
-            content: '';
-            position: absolute;
-            top: -30px;
-            right: -30px;
-            width: 70px;
-            height: 70px;
-            border-radius: 50%;
-            background: radial-gradient(circle, rgba(255, 107, 157, 0.25) 0%, transparent 70%);
-            pointer-events: none;
-            transition: all 0.5s;
-            opacity: 0.6;
-        }
-        .project-card:hover::before {
-            top: -20px;
-            right: -20px;
-            width: 100px;
-            height: 100px;
-            opacity: 0.9;
-            background: radial-gradient(circle, rgba(255, 154, 86, 0.35) 0%, transparent 70%);
-        }
-
-        /* Sprinkles dots on card */
-        .card-sprinkles {
-            position: absolute;
-            top: 12px;
-            right: 16px;
-            display: flex;
-            gap: 5px;
-            pointer-events: none;
-            opacity: 0;
-            transition: opacity 0.4s;
-        }
-        .project-card:hover .card-sprinkles {
-            opacity: 1;
-        }
-        .card-sprinkle-dot {
-            width: 8px;
-            height: 8px;
-            border-radius: 2px;
-            animation: sprinklePop 0.5s ease-out forwards;
-        }
-        .card-sprinkle-dot:nth-child(1) {
-            background: var(--sprinkle-yellow);
-            animation-delay: 0s;
-        }
-        .card-sprinkle-dot:nth-child(2) {
-            background: var(--sprinkle-blue);
-            animation-delay: 0.07s;
-        }
-        .card-sprinkle-dot:nth-child(3) {
-            background: var(--sprinkle-green);
-            animation-delay: 0.14s;
-        }
-        .card-sprinkle-dot:nth-child(4) {
-            background: var(--sprinkle-purple);
-            animation-delay: 0.21s;
-        }
-        .card-sprinkle-dot:nth-child(5) {
-            background: var(--sprinkle-orange);
-            animation-delay: 0.28s;
-        }
-
-        @keyframes sprinklePop {
-            0% {
-                transform: scale(0) rotate(0deg);
-                opacity: 0;
-            }
-            60% {
-                transform: scale(1.6) rotate(180deg);
-                opacity: 1;
-            }
-            100% {
-                transform: scale(1) rotate(360deg);
-                opacity: 1;
-            }
-        }
-
-        .project-icon {
-            font-size: 2.2rem;
-            transition: transform 0.4s;
-            display: inline-block;
-        }
-        .project-card:hover .project-icon {
-            transform: scale(1.2) rotate(-10deg);
-        }
-
-        .project-name {
-            font-weight: 700;
-            font-size: 1.15rem;
-            letter-spacing: -0.3px;
-            color: #f5e6d3;
-            position: relative;
-            z-index: 1;
-        }
-        .project-desc {
-            font-size: 0.85rem;
-            color: #a89b8a;
-            line-height: 1.4;
-            position: relative;
-            z-index: 1;
-        }
-        .project-link-hint {
-            font-size: 0.75rem;
-            color: #ff6b9d;
-            font-weight: 600;
-            letter-spacing: 1px;
-            text-transform: uppercase;
-            opacity: 0;
-            transform: translateY(8px);
-            transition: all 0.35s;
-            position: relative;
-            z-index: 1;
-        }
-        .project-card:hover .project-link-hint {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        /* ============ TOAST ============ */
-        .toast {
-            position: fixed;
-            bottom: 30px;
-            left: 50%;
-            transform: translateX(-50%) translateY(100px);
-            background: #ff6b9d;
-            color: #1a1a2e;
-            padding: 14px 28px;
-            border-radius: 50px;
-            font-weight: 700;
-            letter-spacing: 0.5px;
-            z-index: 999;
-            pointer-events: none;
-            box-shadow: 0 10px 35px rgba(255, 107, 157, 0.5);
-            transition: transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
-            font-size: 0.95rem;
-        }
-        .toast.show {
-            transform: translateX(-50%) translateY(0);
-        }
-
-        /* ============ FOOTER ============ */
-        .footer {
-            text-align: center;
-            padding: 30px 20px 10px;
-            color: #5a4f44;
-            font-size: 0.8rem;
-            letter-spacing: 1px;
-            position: relative;
-            z-index: 1;
-        }
-        .footer span {
-            color: #ff6b9d;
-            font-weight: 700;
-        }
-
-        /* ============ THEME TOGGLE ============ */
-        .theme-toggle {
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            z-index: 100;
-            width: 44px;
-            height: 44px;
-            border-radius: 50%;
-            background: rgba(22, 33, 62, 0.8);
-            backdrop-filter: blur(10px);
-            border: 2px solid rgba(255, 107, 157, 0.35);
-            cursor: pointer;
-            font-size: 1.3rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: all 0.35s;
-            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
-            color: #f0e6d3;
-        }
-        .theme-toggle:hover {
-            border-color: #ff6b9d;
-            box-shadow: 0 0 25px rgba(255, 107, 157, 0.35);
-            transform: rotate(20deg);
-        }
-        .theme-toggle:active {
-            transform: scale(0.9) rotate(-20deg);
-        }
-
-        /* ============ LIGHT MODE ============ */
         body.light {
-            --bg: #fef9f3;
-            --card-bg: #ffffff;
-            --text: #3d2c1e;
-            --card-hover: #fff5ee;
-            --shadow: 0 8px 28px rgba(0, 0, 0, 0.08);
+            background: #fef9f3;
+            color: #3d2c1e;
         }
-        body.light .project-desc {
-            color: #7a6a5c;
+        body.light .project-card {
+            background: #ffffff;
         }
         body.light .project-name {
             color: #3d2c1e;
+        }
+        body.light .project-desc {
+            color: #7a6a5c;
         }
         body.light .search-input {
             background: rgba(255, 255, 255, 0.8);
@@ -503,10 +61,399 @@
         body.light .footer {
             color: #a09080;
         }
-        body.light .theme-toggle {
+        body.light .theme-toggle,
+        body.light .lang-select {
             background: rgba(255, 255, 255, 0.7);
             border-color: rgba(255, 107, 157, 0.3);
             color: #3d2c1e;
+        }
+        body.light .donut-logo svg circle:nth-child(2) {
+            fill: #fef9f3;
+        }
+
+        /* ============ CANVAS ============ */
+        #sprinkles-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        /* ============ MAIN CONTAINER ============ */
+        .main-container {
+            position: relative;
+            z-index: 1;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 30px 20px 60px;
+        }
+
+        /* ============ HEADER ============ */
+        .header {
+            text-align: center;
+            padding: 40px 20px 20px;
+        }
+        .donut-logo {
+            display: inline-block;
+            cursor: pointer;
+            animation: floatDonut 3s ease-in-out infinite;
+            -webkit-animation: floatDonut 3s ease-in-out infinite;
+        }
+        .donut-logo:active {
+            transform: scale(0.9);
+            -webkit-transform: scale(0.9);
+        }
+        @keyframes floatDonut {
+            0%, 100% { transform: translateY(0px); -webkit-transform: translateY(0px); }
+            30% { transform: translateY(-18px); -webkit-transform: translateY(-18px); }
+            60% { transform: translateY(-6px); -webkit-transform: translateY(-6px); }
+            85% { transform: translateY(-14px); -webkit-transform: translateY(-14px); }
+        }
+        @-webkit-keyframes floatDonut {
+            0%, 100% { -webkit-transform: translateY(0px); }
+            30% { -webkit-transform: translateY(-18px); }
+            60% { -webkit-transform: translateY(-6px); }
+            85% { -webkit-transform: translateY(-14px); }
+        }
+        .donut-logo svg {
+            width: 100px;
+            height: 100px;
+            filter: drop-shadow(0 10px 30px rgba(255, 107, 157, 0.5));
+            -webkit-filter: drop-shadow(0 10px 30px rgba(255, 107, 157, 0.5));
+            transition: filter 0.4s;
+        }
+        .donut-logo:hover svg {
+            filter: drop-shadow(0 14px 40px rgba(255, 107, 157, 0.75));
+            -webkit-filter: drop-shadow(0 14px 40px rgba(255, 107, 157, 0.75));
+        }
+        .frosting-drip {
+            animation: dripPulse 2s ease-in-out infinite;
+            -webkit-animation: dripPulse 2s ease-in-out infinite;
+            transform-origin: top center;
+        }
+        @keyframes dripPulse {
+            0%, 100% { d: path('M 35 48 Q 35 52 38 54 Q 41 56 38 60'); }
+            50% { d: path('M 35 48 Q 35 52 38 55 Q 41 58 38 63'); }
+        }
+        @-webkit-keyframes dripPulse {
+            0%, 100% { d: path('M 35 48 Q 35 52 38 54 Q 41 56 38 60'); }
+            50% { d: path('M 35 48 Q 35 52 38 55 Q 41 58 38 63'); }
+        }
+        .title {
+            font-size: 3rem;
+            font-weight: 900;
+            letter-spacing: -1px;
+            background: linear-gradient(135deg, #ff6b9d, #ff9a56, #ff6b9d, #c471ed);
+            background-size: 300% 300%;
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            color: #ff6b9d; /* fallback */
+            animation: gradientShift 4s ease-in-out infinite;
+            -webkit-animation: gradientShift 4s ease-in-out infinite;
+            margin-top: 8px;
+        }
+        @keyframes gradientShift {
+            0%, 100% { background-position: 0% 50%; }
+            25% { background-position: 100% 0%; }
+            50% { background-position: 100% 100%; }
+            75% { background-position: 0% 100%; }
+        }
+        @-webkit-keyframes gradientShift {
+            0%, 100% { background-position: 0% 50%; }
+            25% { background-position: 100% 0%; }
+            50% { background-position: 100% 100%; }
+            75% { background-position: 0% 100%; }
+        }
+        .subtitle {
+            font-size: 1.1rem;
+            color: #c9b8a8;
+            margin-top: 4px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            font-weight: 500;
+        }
+        .tagline {
+            font-size: 0.9rem;
+            color: #8a7b6e;
+            margin-top: 6px;
+            font-style: italic;
+        }
+
+        /* ============ CONTROLS ROW (theme, lang, device badge) ============ */
+        .controls-row {
+            display: -ms-flexbox;
+            display: flex;
+            -ms-flex-align: center;
+            align-items: center;
+            -ms-flex-pack: center;
+            justify-content: center;
+            gap: 12px;
+            flex-wrap: wrap;
+            margin-bottom: 15px;
+        }
+        .theme-toggle, .lang-select {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: rgba(22, 33, 62, 0.8);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 2px solid rgba(255, 107, 157, 0.35);
+            cursor: pointer;
+            font-size: 1.3rem;
+            display: -ms-flexbox;
+            display: flex;
+            -ms-flex-align: center;
+            align-items: center;
+            -ms-flex-pack: center;
+            justify-content: center;
+            transition: all 0.35s;
+            color: #f0e6d3;
+            padding: 0;
+            text-align: center;
+        }
+        .lang-select {
+            width: auto;
+            padding: 0 12px;
+            font-size: 1rem;
+            border-radius: 50px;
+            appearance: none;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="%23f0e6d3"><path d="M7 10l5 5 5-5z"/></svg>');
+            background-repeat: no-repeat;
+            background-position: right 8px center;
+            background-size: 14px;
+            cursor: pointer;
+        }
+        body.light .lang-select {
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="%233d2c1e"><path d="M7 10l5 5 5-5z"/></svg>');
+        }
+        .device-badge {
+            font-size: 0.8rem;
+            background: rgba(255, 107, 157, 0.15);
+            border-radius: 50px;
+            padding: 4px 12px;
+            white-space: nowrap;
+            border: 1px dashed rgba(255, 107, 157, 0.3);
+        }
+
+        /* ============ GREETING BAR ============ */
+        .greeting-bar {
+            text-align: center;
+            margin: 10px 0 20px;
+            font-size: 1rem;
+            color: #b8a594;
+            letter-spacing: 1px;
+        }
+        .greeting-bar .time {
+            font-weight: 700;
+            color: #ff6b9d;
+            font-size: 1.3rem;
+        }
+        .weather-widget {
+            margin-left: 8px;
+            font-weight: 500;
+            color: #f7c5cc;
+        }
+
+        /* ============ SEARCH ============ */
+        .search-wrap {
+            display: -ms-flexbox;
+            display: flex;
+            -ms-flex-pack: center;
+            justify-content: center;
+            margin-bottom: 28px;
+            position: relative;
+        }
+        .search-icon {
+            position: absolute;
+            left: calc(50% - 230px);
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 1.2rem;
+            pointer-events: none;
+            color: #8a7b6e;
+            transition: color 0.3s;
+        }
+        .search-input:focus ~ .search-icon,
+        .search-wrap:focus-within .search-icon {
+            color: #ff6b9d;
+        }
+        .search-input {
+            width: 100%;
+            max-width: 500px;
+            padding: 14px 22px;
+            padding-left: 48px;
+            border-radius: 50px;
+            border: 2px solid rgba(255, 107, 157, 0.35);
+            background: rgba(22, 33, 62, 0.8);
+            backdrop-filter: blur(10px);
+            color: #f0e6d3;
+            font-size: 1rem;
+            letter-spacing: 0.5px;
+            transition: all 0.35s;
+            outline: none;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
+            -webkit-appearance: none;
+        }
+        .search-input::placeholder {
+            color: #6b5e52;
+            letter-spacing: 1px;
+        }
+        .search-input:focus {
+            border-color: #ff6b9d;
+            box-shadow: 0 0 0 6px rgba(255, 107, 157, 0.1), 0 8px 30px rgba(0, 0, 0, 0.35);
+            background: rgba(30, 45, 80, 0.9);
+        }
+
+        /* ============ PROJECTS ============ */
+        .projects-grid {
+            display: -ms-flexbox;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            -ms-flex-pack: center;
+            justify-content: center;
+        }
+        .project-card {
+            background: #16213e;
+            border-radius: 20px;
+            padding: 24px 22px;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+            border: 1.5px solid rgba(255, 255, 255, 0.06);
+            transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1.2);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+            display: -ms-flexbox;
+            display: flex;
+            -ms-flex-direction: column;
+            flex-direction: column;
+            gap: 10px;
+            text-decoration: none;
+            color: inherit;
+            width: calc(33.333% - 20px);
+            min-width: 250px;
+            -ms-flex: 1 1 auto;
+            flex: 1 1 auto;
+        }
+        .project-card:hover {
+            background: #1e2d50;
+            border-color: rgba(255, 107, 157, 0.4);
+            transform: translateY(-6px);
+            box-shadow: 0 16px 40px rgba(0, 0, 0, 0.5), 0 0 40px rgba(255, 107, 157, 0.3);
+        }
+        .project-card::before {
+            content: '';
+            position: absolute;
+            top: -30px;
+            right: -30px;
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(255, 107, 157, 0.25) 0%, transparent 70%);
+            pointer-events: none;
+            transition: all 0.5s;
+            opacity: 0.6;
+        }
+        .project-card:hover::before {
+            top: -20px;
+            right: -20px;
+            width: 100px;
+            height: 100px;
+            opacity: 0.9;
+            background: radial-gradient(circle, rgba(255, 154, 86, 0.35) 0%, transparent 70%);
+        }
+        .project-icon {
+            font-size: 2.2rem;
+            transition: transform 0.4s;
+            display: inline-block;
+        }
+        .project-card:hover .project-icon {
+            transform: scale(1.2) rotate(-10deg);
+        }
+        .project-name {
+            font-weight: 700;
+            font-size: 1.15rem;
+            letter-spacing: -0.3px;
+            color: #f5e6d3;
+        }
+        .project-desc {
+            font-size: 0.85rem;
+            color: #a89b8a;
+            line-height: 1.4;
+        }
+        .project-link-hint {
+            font-size: 0.75rem;
+            color: #ff6b9d;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            opacity: 0;
+            transform: translateY(8px);
+            transition: all 0.35s;
+        }
+        .project-card:hover .project-link-hint {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        @media (max-width: 800px) {
+            .project-card {
+                width: 100%;
+                min-width: auto;
+            }
+        }
+        .no-results {
+            text-align: center;
+            padding: 40px;
+            color: #8a7b6e;
+            width: 100%;
+        }
+
+        /* ============ TOAST ============ */
+        .toast {
+            position: fixed;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%) translateY(100px);
+            background: #ff6b9d;
+            color: #1a1a2e;
+            padding: 14px 28px;
+            border-radius: 50px;
+            font-weight: 700;
+            z-index: 999;
+            pointer-events: none;
+            box-shadow: 0 10px 35px rgba(255, 107, 157, 0.5);
+            transition: transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+            font-size: 0.95rem;
+            white-space: nowrap;
+        }
+        .toast.show {
+            transform: translateX(-50%) translateY(0);
+        }
+
+        /* ============ FOOTER ============ */
+        .footer {
+            text-align: center;
+            padding: 30px 20px 10px;
+            color: #5a4f44;
+            font-size: 0.8rem;
+            letter-spacing: 1px;
+            position: relative;
+            z-index: 1;
+        }
+        .footer a {
+            color: #ff6b9d;
+            text-decoration: none;
+            font-weight: 700;
+        }
+        .footer a:hover {
+            text-decoration: underline;
         }
 
         /* ============ SCROLLBAR ============ */
@@ -520,101 +467,24 @@
             background: #ff6b9d55;
             border-radius: 10px;
         }
-        ::-webkit-scrollbar-thumb:hover {
-            background: #ff6b9d99;
-        }
-
-        /* ============ RESPONSIVE ============ */
-        @media (max-width: 600px) {
-            .projects-grid {
-                grid-template-columns: 1fr;
-                gap: 14px;
-            }
-            .header {
-                padding: 20px 10px 10px;
-            }
-            .donut-logo svg {
-                width: 70px;
-                height: 70px;
-            }
-            .title {
-                font-size: 2rem;
-            }
-            .project-card {
-                padding: 18px 16px;
-                border-radius: 16px;
-            }
-        }
-
-        /* ============ RIPPLE EFFECT ============ */
-        .ripple {
-            position: absolute;
-            border-radius: 50%;
-            background: rgba(255, 107, 157, 0.4);
-            transform: scale(0);
-            animation: rippleEffect 0.7s ease-out forwards;
-            pointer-events: none;
-        }
-        @keyframes rippleEffect {
-            to {
-                transform: scale(6);
-                opacity: 0;
-            }
-        }
-
-        /* ============ NO RESULTS ============ */
-        .no-results {
-            text-align: center;
-            padding: 40px;
-            color: #8a7b6e;
-            font-size: 1.1rem;
-            grid-column: 1 / -1;
-            animation: fadeInUp 0.5s ease;
-        }
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
     </style>
 </head>
 <body>
 
-    <!-- Canvas for floating sprinkles -->
     <canvas id="sprinkles-canvas"></canvas>
 
-    <!-- Theme Toggle -->
-    <button class="theme-toggle" id="themeToggle" title="Toggle light/dark mode" aria-label="Toggle theme">
-        🌙
-    </button>
+    <button class="theme-toggle" id="themeToggle" title="Toggle light/dark mode" aria-label="Toggle theme">🌙</button>
 
-    <!-- Main Container -->
     <div class="main-container">
-
-        <!-- Header -->
         <header class="header">
-            <div class="donut-logo" id="donutLogo" title="Click me! 🍩">
+            <div class="donut-logo" id="donutLogo">
                 <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-                    <!-- Outer donut body -->
                     <circle cx="50" cy="50" r="42" fill="#d4956b" stroke="#8b5e3c" stroke-width="3"/>
-                    <!-- Inner hole -->
                     <circle cx="50" cy="50" r="16" fill="#1a1a2e" stroke="#8b5e3c" stroke-width="2"/>
-                    <!-- Pink frosting -->
-                    <path d="M 12 38 Q 8 50 14 62 Q 20 78 40 84 Q 55 88 65 80 Q 78 70 82 55 Q 88 40 80 28 Q 70 14 50 10 Q 30 8 18 22 Z"
-                    fill="#ff6b9d" opacity="0.85"/>
-                    <!-- Frosting drips -->
-                    <path d="M 28 42 Q 26 50 30 55 Q 34 58 32 64" fill="#ff6b9d" stroke="#e0557a" stroke-width="1.5"
-                        stroke-linecap="round" class="frosting-drip"/>
-                    <path d="M 62 38 Q 60 46 64 52 Q 67 56 65 61" fill="#ff6b9d" stroke="#e0557a" stroke-width="1.5"
-                        stroke-linecap="round" class="frosting-drip" style="animation-delay: 0.8s;"/>
-                    <path d="M 74 50 Q 76 56 73 60 Q 70 64 72 68" fill="#ff6b9d" stroke="#e0557a" stroke-width="1.5"
-                        stroke-linecap="round" class="frosting-drip" style="animation-delay: 1.6s;"/>
-                    <!-- Sprinkles on frosting -->
+                    <path d="M 12 38 Q 8 50 14 62 Q 20 78 40 84 Q 55 88 65 80 Q 78 70 82 55 Q 88 40 80 28 Q 70 14 50 10 Q 30 8 18 22 Z" fill="#ff6b9d" opacity="0.85"/>
+                    <path d="M 28 42 Q 26 50 30 55 Q 34 58 32 64" fill="#ff6b9d" stroke="#e0557a" stroke-width="1.5" stroke-linecap="round" class="frosting-drip"/>
+                    <path d="M 62 38 Q 60 46 64 52 Q 67 56 65 61" fill="#ff6b9d" stroke="#e0557a" stroke-width="1.5" stroke-linecap="round" class="frosting-drip" style="animation-delay:0.8s"/>
+                    <path d="M 74 50 Q 76 56 73 60 Q 70 64 72 68" fill="#ff6b9d" stroke="#e0557a" stroke-width="1.5" stroke-linecap="round" class="frosting-drip" style="animation-delay:1.6s"/>
                     <rect x="30" y="25" width="6" height="2.5" rx="1.2" fill="#ffe259" transform="rotate(25 33 26)"/>
                     <rect x="48" y="18" width="6" height="2.5" rx="1.2" fill="#56ccf2" transform="rotate(-15 51 19)"/>
                     <rect x="60" y="28" width="6" height="2.5" rx="1.2" fill="#7bed9f" transform="rotate(40 63 29)"/>
@@ -622,274 +492,541 @@
                     <rect x="68" y="42" width="6" height="2.5" rx="1.2" fill="#ff9a56" transform="rotate(10 71 43)"/>
                     <rect x="22" y="45" width="6" height="2.5" rx="1.2" fill="#ffffff" transform="rotate(50 25 46)"/>
                     <rect x="55" y="48" width="6" height="2.5" rx="1.2" fill="#ffe259" transform="rotate(-40 58 49)"/>
-                    <!-- Donut shine -->
                     <ellipse cx="35" cy="30" rx="10" ry="6" fill="white" opacity="0.15" transform="rotate(-20 35 30)"/>
                 </svg>
             </div>
             <h1 class="title">Donut Club</h1>
-            <p class="subtitle">🍩 Sweet Tools & Tasty Projects</p>
-            <p class="tagline">— a freshly baked collection —</p>
+            <p class="subtitle" id="subtitleText">🍩 Sweet Tools & Tasty Projects</p>
+            <p class="tagline" id="taglineText">— a freshly baked collection —</p>
         </header>
 
-        <!-- Greeting & Clock -->
-        <div class="greeting-bar" id="greetingBar">
-            <span id="greetingText">Hello!</span> · <span class="time" id="liveTime">00:00</span>
+        <div class="controls-row">
+            <select class="lang-select" id="langSelect" aria-label="Select language">
+                <option value="en">🌐 EN</option>
+                <option value="es">🌐 ES</option>
+                <option value="fr">🌐 FR</option>
+                <option value="ja">🌐 JA</option>
+            </select>
+            <span class="device-badge" id="deviceBadge" style="display:none;"></span>
         </div>
 
-        <!-- Search -->
+        <div class="greeting-bar" id="greetingBar">
+            <span id="greetingText">Hello!</span> · <span class="time" id="liveTime">00:00</span>
+            <span class="weather-widget" id="weatherWidget">⏳</span>
+        </div>
+
         <div class="search-wrap">
             <input type="text" class="search-input" id="searchInput" placeholder="Search projects...">
             <span class="search-icon">🔍</span>
         </div>
 
-        <!-- Projects Grid -->
-        <div class="projects-grid" id="projectsGrid">
-            <!-- Cards injected by JS -->
-        </div>
+        <div class="projects-grid" id="projectsGrid"></div>
 
-        <!-- Footer -->
         <div class="footer">
-            Made with 🍩 & <span>Donut Club</span> · Click a card to visit
+            Made with 🍩 & <span>Donut Club</span> · <a href="mailto:wen471942@gmail.com">📧 Contact</a>
         </div>
     </div>
 
-    <!-- Toast -->
     <div class="toast" id="toast"></div>
 
     <script>
         (function() {
-            // ============ PROJECT DATA ============
-            const projects = [{
-                name: 'Tom the AI',
-                desc: 'AI assistant tool',
-                link: 'https://math12393.codeberg.page/Tom-The-Ai-Download/',
-                icon: '🤖'
-            }, {
-                name: 'IPA Signer / IPA Editor',
-                desc: 'iOS IPA signing tool',
-                link: 'https://math12393.codeberg.page/IPA-SIGNER-WEN/',
-                icon: '📱'
-            }, {
-                name: 'OMNI Encoder',
-                desc: 'Max tools with Base64',
-                link: 'https://math12393.codeberg.page/OMNI-ENCODER/',
-                icon: '🔐'
-            }, {
-                name: 'Universal Extractor',
-                desc: 'Extract/edit any file in browser',
-                link: 'https://math12393.codeberg.page/Universal-Extractor/',
-                icon: '📦'
-            }, {
-                name: 'NEXUS Architect',
-                desc: 'Generate README, LICENSE, etc.',
-                link: 'https://math12393.codeberg.page/Nexus-Architect/',
-                icon: '🏗️'
-            }, {
-                name: 'AI Website Maker',
-                desc: 'Instant site from HTML code',
-                link: 'https://math12393.codeberg.page/Ai-Website-Maker/',
-                icon: '🌐'
-            }, {
-                name: 'Global Chat',
-                desc: 'Realtime global chat app',
-                link: 'https://math12393.codeberg.page/global-chat/',
-                icon: '💬'
-            }];
+            /* ==================== POLYFILLS & HELPERS ==================== */
+            // requestAnimationFrame fallback
+            var requestAnimFrame = window.requestAnimationFrame || window.webkitRequestAnimationFrame ||
+                window.mozRequestAnimationFrame || function(callback) { window.setTimeout(callback, 1000 / 60); };
 
-            // ============ DOM REFS ============
-            const projectsGrid = document.getElementById('projectsGrid');
-            const searchInput = document.getElementById('searchInput');
-            const toast = document.getElementById('toast');
-            const donutLogo = document.getElementById('donutLogo');
-            const themeToggle = document.getElementById('themeToggle');
-            const greetingBar = document.getElementById('greetingBar');
-            const greetingText = document.getElementById('greetingText');
-            const liveTime = document.getElementById('liveTime');
-            const canvas = document.getElementById('sprinkles-canvas');
-            const ctx = canvas.getContext('2d');
+            // Simple canvas rounded rectangle for old browsers (no roundRect)
+            function fillRoundRect(ctx, x, y, w, h, r) {
+                if (w < 2 * r) r = w / 2;
+                if (h < 2 * r) r = h / 2;
+                ctx.beginPath();
+                ctx.moveTo(x + r, y);
+                ctx.lineTo(x + w - r, y);
+                ctx.arcTo(x + w, y, x + w, y + r, r);
+                ctx.lineTo(x + w, y + h - r);
+                ctx.arcTo(x + w, y + h, x + w - r, y + h, r);
+                ctx.lineTo(x + r, y + h);
+                ctx.arcTo(x, y + h, x, y + h - r, r);
+                ctx.lineTo(x, y + r);
+                ctx.arcTo(x, y, x + r, y, r);
+                ctx.closePath();
+                ctx.fill();
+            }
 
-            // ============ RENDER CARDS ============
-            function renderCards(filter = '') {
-                const filtered = projects.filter(p =>
-                    p.name.toLowerCase().includes(filter.toLowerCase()) ||
-                    p.desc.toLowerCase().includes(filter.toLowerCase())
-                );
-
-                if (filtered.length === 0) {
-                    projectsGrid.innerHTML =
-                        '<div class="no-results">🍩 No projects found... try a different search!</div>';
-                } else {
-                    projectsGrid.innerHTML = filtered.map((p, i) => `
-                <a href="${p.link}" class="project-card" target="_blank" rel="noopener" data-index="${i}" title="Visit: ${p.name}">
-                  <div class="card-sprinkles">
-                    <span class="card-sprinkle-dot"></span>
-                    <span class="card-sprinkle-dot"></span>
-                    <span class="card-sprinkle-dot"></span>
-                    <span class="card-sprinkle-dot"></span>
-                    <span class="card-sprinkle-dot"></span>
-                  </div>
-                  <span class="project-icon">${p.icon}</span>
-                  <span class="project-name">${p.name}</span>
-                  <span class="project-desc">${p.desc}</span>
-                  <span class="project-link-hint">→ Visit Site</span>
-                </a>
-              `).join('');
+            /* ==================== TRANSLATIONS ==================== */
+            var translations = {
+                en: {
+                    subtitle: "🍩 Sweet Tools & Tasty Projects",
+                    tagline: "— a freshly baked collection —",
+                    searchPlaceholder: "Search projects...",
+                    greeting_morning: "☀️ Good morning!",
+                    greeting_afternoon: "🍩 Good afternoon! Treat yourself!",
+                    greeting_evening: "🌆 Good evening! Sweet hour!",
+                    greeting_night: "🌙 Good night! Dream of donuts!",
+                    footer: "Made with 🍩 & Donut Club",
+                    contact: "📧 Contact",
+                    noResults: "🍩 No projects found... try a different search!",
+                    toast_open: "🍩 Opening ",
+                    toast_theme_dark: "🌙 Dark mode — chocolate night!",
+                    toast_theme_light: "☀️ Light mode — fresh glaze!",
+                    project_names: {
+                        "Tom the AI": "Tom the AI",
+                        "IPA Signer / IPA Editor": "IPA Signer / IPA Editor",
+                        "OMNI Encoder": "OMNI Encoder",
+                        "Universal Extractor": "Universal Extractor",
+                        "NEXUS Architect": "NEXUS Architect",
+                        "AI Website Maker": "AI Website Maker",
+                        "Global Chat": "Global Chat"
+                    },
+                    project_descs: {
+                        "Tom the AI": "AI assistant tool",
+                        "IPA Signer / IPA Editor": "iOS IPA signing tool",
+                        "OMNI Encoder": "Max tools with Base64",
+                        "Universal Extractor": "Extract/edit any file in browser",
+                        "NEXUS Architect": "Generate README, LICENSE, etc.",
+                        "AI Website Maker": "Instant site from HTML code",
+                        "Global Chat": "Realtime global chat app"
+                    },
+                    visit_hint: "→ Visit Site"
+                },
+                es: {
+                    subtitle: "🍩 Herramientas Dulces y Proyectos Sabrosos",
+                    tagline: "— una colección recién horneada —",
+                    searchPlaceholder: "Buscar proyectos...",
+                    greeting_morning: "☀️ ¡Buenos días!",
+                    greeting_afternoon: "🍩 ¡Buenas tardes! ¡Date un capricho!",
+                    greeting_evening: "🌆 ¡Buenas noches! ¡Hora dulce!",
+                    greeting_night: "🌙 ¡Buenas noches! ¡Sueña con donuts!",
+                    footer: "Hecho con 🍩 y Donut Club",
+                    contact: "📧 Contacto",
+                    noResults: "🍩 No se encontraron proyectos... ¡prueba otra búsqueda!",
+                    toast_open: "🍩 Abriendo ",
+                    toast_theme_dark: "🌙 Modo oscuro — ¡noche de chocolate!",
+                    toast_theme_light: "☀️ Modo claro — ¡glaseado fresco!",
+                    project_names: {
+                        "Tom the AI": "Tom la IA",
+                        "IPA Signer / IPA Editor": "Firmador IPA / Editor IPA",
+                        "OMNI Encoder": "Codificador OMNI",
+                        "Universal Extractor": "Extractor Universal",
+                        "NEXUS Architect": "Arquitecto NEXUS",
+                        "AI Website Maker": "Creador de Sitios Web IA",
+                        "Global Chat": "Chat Global"
+                    },
+                    project_descs: {
+                        "Tom the AI": "Asistente IA",
+                        "IPA Signer / IPA Editor": "Herramienta para firmar IPA en iOS",
+                        "OMNI Encoder": "Máximas herramientas con Base64",
+                        "Universal Extractor": "Extraer/editar cualquier archivo en el navegador",
+                        "NEXUS Architect": "Generar README, LICENSE, etc.",
+                        "AI Website Maker": "Sitio instantáneo desde código HTML",
+                        "Global Chat": "Chat global en tiempo real"
+                    },
+                    visit_hint: "→ Visitar Sitio"
+                },
+                fr: {
+                    subtitle: "🍩 Outils Sucrés et Projets Savoureux",
+                    tagline: "— une collection fraîchement préparée —",
+                    searchPlaceholder: "Rechercher des projets...",
+                    greeting_morning: "☀️ Bonjour !",
+                    greeting_afternoon: "🍩 Bon après-midi ! Faites-vous plaisir !",
+                    greeting_evening: "🌆 Bonsoir ! L'heure sucrée !",
+                    greeting_night: "🌙 Bonne nuit ! Rêvez de beignets !",
+                    footer: "Fait avec 🍩 & Donut Club",
+                    contact: "📧 Contact",
+                    noResults: "🍩 Aucun projet trouvé... essayez une autre recherche !",
+                    toast_open: "🍩 Ouverture de ",
+                    toast_theme_dark: "🌙 Mode sombre — nuit chocolatée !",
+                    toast_theme_light: "☀️ Mode clair — glaçage frais !",
+                    project_names: {
+                        "Tom the AI": "Tom l'IA",
+                        "IPA Signer / IPA Editor": "Signataire IPA / Éditeur IPA",
+                        "OMNI Encoder": "Encodeur OMNI",
+                        "Universal Extractor": "Extracteur Universel",
+                        "NEXUS Architect": "Architecte NEXUS",
+                        "AI Website Maker": "Créateur de Site IA",
+                        "Global Chat": "Chat Global"
+                    },
+                    project_descs: {
+                        "Tom the AI": "Assistant IA",
+                        "IPA Signer / IPA Editor": "Outil de signature IPA iOS",
+                        "OMNI Encoder": "Outils max avec Base64",
+                        "Universal Extractor": "Extraire/éditer tout fichier dans le navigateur",
+                        "NEXUS Architect": "Générer README, LICENSE, etc.",
+                        "AI Website Maker": "Site instantané à partir de code HTML",
+                        "Global Chat": "Chat global en temps réel"
+                    },
+                    visit_hint: "→ Visiter le site"
+                },
+                ja: {
+                    subtitle: "🍩 甘いツールとおいしいプロジェクト",
+                    tagline: "— 焼きたてのコレクション —",
+                    searchPlaceholder: "プロジェクトを検索...",
+                    greeting_morning: "☀️ おはようございます！",
+                    greeting_afternoon: "🍩 こんにちは！自分にご褒美を！",
+                    greeting_evening: "🌆 こんばんは！甘い時間！",
+                    greeting_night: "🌙 おやすみなさい！ドーナツの夢を！",
+                    footer: "🍩 & Donut Club で作りました",
+                    contact: "📧 お問い合わせ",
+                    noResults: "🍩 プロジェクトが見つかりません... 別の検索を試してください！",
+                    toast_open: "🍩 開いています ",
+                    toast_theme_dark: "🌙 ダークモード — チョコレートの夜！",
+                    toast_theme_light: "☀️ ライトモード — 新鮮なグレーズ！",
+                    project_names: {
+                        "Tom the AI": "Tom the AI",
+                        "IPA Signer / IPA Editor": "IPA署名ツール / IPAエディタ",
+                        "OMNI Encoder": "OMNIエンコーダー",
+                        "Universal Extractor": "ユニバーサル抽出ツール",
+                        "NEXUS Architect": "NEXUSアーキテクト",
+                        "AI Website Maker": "AIウェブサイトメーカー",
+                        "Global Chat": "グローバルチャット"
+                    },
+                    project_descs: {
+                        "Tom the AI": "AIアシスタントツール",
+                        "IPA Signer / IPA Editor": "iOS IPA署名ツール",
+                        "OMNI Encoder": "Base64を使った最大限のツール",
+                        "Universal Extractor": "ブラウザで任意のファイルを抽出/編集",
+                        "NEXUS Architect": "README、LICENSEなどを生成",
+                        "AI Website Maker": "HTMLコードから即座にサイトを作成",
+                        "Global Chat": "リアルタイムグローバルチャット"
+                    },
+                    visit_hint: "→ サイトを訪れる"
                 }
+            };
 
-                // Attach ripple effect to new cards
-                document.querySelectorAll('.project-card').forEach(card => {
-                    card.addEventListener('click', function(e) {
-                        createRipple(e, this);
-                        const name = this.querySelector('.project-name')?.textContent || 'Project';
-                        showToast(`🍩 Opening ${name}...`);
-                    });
-                });
+            /* ==================== PROJECTS DATA ==================== */
+            var projects = [
+                { key: "Tom the AI", icon: "🤖", link: "https://math12393.codeberg.page/Tom-The-Ai-Download/" },
+                { key: "IPA Signer / IPA Editor", icon: "📱", link: "https://math12393.codeberg.page/IPA-SIGNER-WEN/" },
+                { key: "OMNI Encoder", icon: "🔐", link: "https://math12393.codeberg.page/OMNI-ENCODER/" },
+                { key: "Universal Extractor", icon: "📦", link: "https://math12393.codeberg.page/Universal-Extractor/" },
+                { key: "NEXUS Architect", icon: "🏗️", link: "https://math12393.codeberg.page/Nexus-Architect/" },
+                { key: "AI Website Maker", icon: "🌐", link: "https://math12393.codeberg.page/Ai-Website-Maker/" },
+                { key: "Global Chat", icon: "💬", link: "https://math12393.codeberg.page/global-chat/" }
+            ];
+
+            /* ==================== DOM ELEMENTS ==================== */
+            var projectsGrid = document.getElementById('projectsGrid');
+            var searchInput = document.getElementById('searchInput');
+            var toast = document.getElementById('toast');
+            var donutLogo = document.getElementById('donutLogo');
+            var themeToggle = document.getElementById('themeToggle');
+            var greetingText = document.getElementById('greetingText');
+            var liveTime = document.getElementById('liveTime');
+            var weatherWidget = document.getElementById('weatherWidget');
+            var langSelect = document.getElementById('langSelect');
+            var deviceBadge = document.getElementById('deviceBadge');
+            var subtitleText = document.getElementById('subtitleText');
+            var taglineText = document.getElementById('taglineText');
+            var canvas = document.getElementById('sprinkles-canvas');
+            var ctx = canvas.getContext('2d');
+
+            var currentLang = 'en';
+            var toastTimeout = null;
+
+            /* ==================== LANGUAGE ==================== */
+            function getTranslation(key) {
+                var lang = translations[currentLang] || translations['en'];
+                return lang[key] || translations['en'][key] || key;
             }
 
-            // ============ RIPPLE EFFECT ============
-            function createRipple(e, el) {
-                const ripple = document.createElement('span');
-                ripple.classList.add('ripple');
-                const rect = el.getBoundingClientRect();
-                const size = Math.max(rect.width, rect.height);
-                ripple.style.width = ripple.style.height = size + 'px';
-                ripple.style.left = (e.clientX - rect.left - size / 2) + 'px';
-                ripple.style.top = (e.clientY - rect.top - size / 2) + 'px';
-                el.appendChild(ripple);
-                ripple.addEventListener('animationend', () => ripple.remove());
+            function getProjectName(projectKey) {
+                var lang = translations[currentLang] || translations['en'];
+                return (lang.project_names && lang.project_names[projectKey]) || projectKey;
             }
 
-            // ============ TOAST ============
-            let toastTimeout;
-
-            function showToast(msg) {
-                clearTimeout(toastTimeout);
-                toast.textContent = msg;
-                toast.classList.add('show');
-                toastTimeout = setTimeout(() => {
-                    toast.classList.remove('show');
-                }, 1800);
+            function getProjectDesc(projectKey) {
+                var lang = translations[currentLang] || translations['en'];
+                return (lang.project_descs && lang.project_descs[projectKey]) || '';
             }
 
-            // ============ SEARCH ============
-            searchInput.addEventListener('input', () => {
+            function updateUITexts() {
+                subtitleText.textContent = getTranslation('subtitle');
+                taglineText.textContent = getTranslation('tagline');
+                searchInput.placeholder = getTranslation('searchPlaceholder');
+                // Update footer? static for now
+                // Update greeting on next clock tick
+            }
+
+            function loadLanguage() {
+                try {
+                    var stored = localStorage.getItem('donutClubLang');
+                    if (stored && translations[stored]) {
+                        currentLang = stored;
+                    } else {
+                        // detect browser language
+                        var navLang = (navigator.language || navigator.userLanguage || 'en').substr(0, 2);
+                        if (translations[navLang]) currentLang = navLang;
+                    }
+                } catch(e) {}
+                langSelect.value = currentLang;
+                updateUITexts();
                 renderCards(searchInput.value);
+            }
+
+            function saveLanguage(lang) {
+                try {
+                    localStorage.setItem('donutClubLang', lang);
+                } catch(e) {}
+            }
+
+            langSelect.addEventListener('change', function() {
+                currentLang = langSelect.value;
+                saveLanguage(currentLang);
+                updateUITexts();
+                renderCards(searchInput.value);
+                showToast('🌐 ' + currentLang.toUpperCase());
             });
 
-            // ============ DONUT CLICK ============
-            let clickCount = 0;
-            donutLogo.addEventListener('click', () => {
+            /* ==================== DEVICE DETECTION ==================== */
+            function detectDevice() {
+                var ua = navigator.userAgent;
+                var os = '';
+                var version = '';
+                if (ua.indexOf('Windows NT 5.1') > -1) {
+                    os = 'Windows XP';
+                } else if (ua.indexOf('Windows NT 5.2') > -1) {
+                    os = 'Windows XP x64';
+                } else if (ua.indexOf('Windows') > -1) {
+                    os = 'Windows';
+                } else if (ua.indexOf('iPhone OS') > -1 || ua.indexOf('CPU iPhone OS') > -1) {
+                    os = 'iOS';
+                    var match = ua.match(/OS (\d+)_?(\d+)?/);
+                    if (match) version = match[1] + (match[2] ? '.' + match[2] : '');
+                } else if (ua.indexOf('Android') > -1) {
+                    os = 'Android';
+                    var match2 = ua.match(/Android (\d+\.\d+)/);
+                    if (match2) version = match2[1];
+                } else if (ua.indexOf('Mac OS X') > -1) {
+                    os = 'macOS';
+                } else if (ua.indexOf('Linux') > -1) {
+                    os = 'Linux';
+                }
+                if (os && version) return os + ' ' + version;
+                if (os) return os;
+                return 'unknown device';
+            }
+
+            function showDeviceBadge() {
+                var device = detectDevice();
+                if (device.indexOf('unknown') === -1) {
+                    deviceBadge.style.display = 'inline-block';
+                    deviceBadge.textContent = '🍩 ' + device;
+                }
+            }
+
+            /* ==================== WEATHER ==================== */
+            function fetchWeather() {
+                var xhr = new XMLHttpRequest();
+                xhr.open('GET', 'https://wttr.in/?format=%C+%t', true);
+                xhr.timeout = 8000;
+                xhr.onreadystatechange = function() {
+                    if (xhr.readyState === 4) {
+                        if (xhr.status === 200 && xhr.responseText) {
+                            var weatherText = xhr.responseText.trim();
+                            // wttr.in returns e.g. "☀️ +22°C"
+                            weatherWidget.textContent = weatherText;
+                        } else {
+                            weatherWidget.textContent = '❓';
+                        }
+                    }
+                };
+                xhr.onerror = function() {
+                    weatherWidget.textContent = '❓';
+                };
+                xhr.ontimeout = function() {
+                    weatherWidget.textContent = '⏳';
+                };
+                xhr.send();
+            }
+
+            /* ==================== THEME ==================== */
+            function applyTheme(isLight) {
+                if (isLight) {
+                    document.body.classList.add('light');
+                    themeToggle.textContent = '☀️';
+                } else {
+                    document.body.classList.remove('light');
+                    themeToggle.textContent = '🌙';
+                }
+            }
+
+            function toggleTheme() {
+                var isLight = document.body.classList.contains('light');
+                applyTheme(!isLight);
+                var msg = isLight ? getTranslation('toast_theme_dark') : getTranslation('toast_theme_light');
+                showToast(msg);
+                try {
+                    localStorage.setItem('donutClubTheme', isLight ? 'dark' : 'light');
+                } catch(e) {}
+            }
+
+            function loadTheme() {
+                try {
+                    var stored = localStorage.getItem('donutClubTheme');
+                    if (stored === 'light') applyTheme(true);
+                    else if (stored === 'dark') applyTheme(false);
+                    else applyTheme(false); // default dark
+                } catch(e) { applyTheme(false); }
+            }
+
+            themeToggle.addEventListener('click', toggleTheme);
+
+            /* ==================== CLOCK & GREETING ==================== */
+            function updateClock() {
+                var now = new Date();
+                var hours = now.getHours();
+                var mins = ('0' + now.getMinutes()).slice(-2);
+                var secs = ('0' + now.getSeconds()).slice(-2);
+                liveTime.textContent = ('0' + hours).slice(-2) + ':' + mins + ':' + secs;
+
+                var greetingKey;
+                if (hours < 6) greetingKey = 'greeting_night';
+                else if (hours < 12) greetingKey = 'greeting_morning';
+                else if (hours < 17) greetingKey = 'greeting_afternoon';
+                else if (hours < 21) greetingKey = 'greeting_evening';
+                else greetingKey = 'greeting_night';
+                greetingText.textContent = getTranslation(greetingKey);
+            }
+
+            /* ==================== RENDER CARDS ==================== */
+            function renderCards(filter) {
+                var filterLower = (filter || '').toLowerCase();
+                var filtered = [];
+                for (var i = 0; i < projects.length; i++) {
+                    var p = projects[i];
+                    var name = getProjectName(p.key);
+                    var desc = getProjectDesc(p.key);
+                    if (name.toLowerCase().indexOf(filterLower) !== -1 ||
+                        desc.toLowerCase().indexOf(filterLower) !== -1 ||
+                        p.key.toLowerCase().indexOf(filterLower) !== -1) {
+                        filtered.push(p);
+                    }
+                }
+
+                if (filtered.length === 0) {
+                    projectsGrid.innerHTML = '<div class="no-results">' + getTranslation('noResults') + '</div>';
+                } else {
+                    var html = '';
+                    for (var j = 0; j < filtered.length; j++) {
+                        var proj = filtered[j];
+                        var pName = getProjectName(proj.key);
+                        var pDesc = getProjectDesc(proj.key);
+                        var hint = getTranslation('visit_hint');
+                        html += '<a href="' + proj.link + '" class="project-card" target="_blank" rel="noopener noreferrer" title="' + pName + '">' +
+                            '<span class="project-icon">' + proj.icon + '</span>' +
+                            '<span class="project-name">' + pName + '</span>' +
+                            '<span class="project-desc">' + pDesc + '</span>' +
+                            '<span class="project-link-hint">' + hint + '</span>' +
+                            '</a>';
+                    }
+                    projectsGrid.innerHTML = html;
+
+                    // attach ripple
+                    var cards = document.querySelectorAll('.project-card');
+                    for (var k = 0; k < cards.length; k++) {
+                        (function(card) {
+                            card.addEventListener('click', function(e) {
+                                createRipple(e, card);
+                                var nameEl = card.querySelector('.project-name');
+                                var name = nameEl ? nameEl.textContent : 'Project';
+                                showToast(getTranslation('toast_open') + name + '...');
+                            });
+                        })(cards[k]);
+                    }
+                }
+            }
+
+            /* ==================== RIPPLE EFFECT ==================== */
+            function createRipple(e, el) {
+                var ripple = document.createElement('span');
+                ripple.className = 'ripple';
+                ripple.style.cssText = 'position:absolute;border-radius:50%;background:rgba(255,107,157,0.4);pointer-events:none;transform:scale(0);animation:rippleEffect 0.7s ease-out forwards;';
+                var rect = el.getBoundingClientRect();
+                var size = Math.max(rect.width, rect.height);
+                ripple.style.width = ripple.style.height = size + 'px';
+                ripple.style.left = (e.clientX - rect.left - size/2) + 'px';
+                ripple.style.top = (e.clientY - rect.top - size/2) + 'px';
+                el.appendChild(ripple);
+                ripple.addEventListener('animationend', function() { ripple.remove(); });
+                ripple.addEventListener('webkitAnimationEnd', function() { ripple.remove(); });
+            }
+
+            /* ==================== TOAST ==================== */
+            function showToast(msg) {
+                if (toastTimeout) clearTimeout(toastTimeout);
+                toast.textContent = msg;
+                toast.classList.add('show');
+                toastTimeout = setTimeout(function() {
+                    toast.classList.remove('show');
+                }, 2000);
+            }
+
+            /* ==================== SEARCH ==================== */
+            searchInput.addEventListener('input', function() {
+                renderCards(this.value);
+            });
+
+            /* ==================== DONUT CLICK ==================== */
+            var clickCount = 0;
+            donutLogo.addEventListener('click', function() {
                 clickCount++;
                 if (clickCount % 5 === 0) {
                     showToast('🍩🍩🍩 DONUT PARTY! 🍩🍩🍩');
-                    // Burst extra sprinkles
-                    for (let i = 0; i < 15; i++) {
-                        setTimeout(() => spawnBurstSprinkle(), i * 40);
+                    for (var i = 0; i < 15; i++) {
+                        setTimeout(spawnBurstSprinkle, i * 40);
                     }
                 } else if (clickCount % 3 === 0) {
                     showToast('🍩 Sweet click!');
                 }
-                // Animate donut
+                // restart float animation
                 donutLogo.style.animation = 'none';
+                donutLogo.style.webkitAnimation = 'none';
                 void donutLogo.offsetWidth;
                 donutLogo.style.animation = 'floatDonut 0.6s ease-in-out';
-                setTimeout(() => {
+                donutLogo.style.webkitAnimation = 'floatDonut 0.6s ease-in-out';
+                setTimeout(function() {
                     donutLogo.style.animation = 'floatDonut 3s ease-in-out infinite';
+                    donutLogo.style.webkitAnimation = 'floatDonut 3s ease-in-out infinite';
                 }, 600);
             });
 
-            // ============ THEME TOGGLE ============
-            function updateThemeIcon() {
-                const isLight = document.body.classList.contains('light');
-                themeToggle.textContent = isLight ? '☀️' : '🌙';
-                // Update donut inner circle color for light mode
-                const innerCircle = document.querySelector('.donut-logo svg circle:nth-child(2)');
-                if (innerCircle) {
-                    innerCircle.setAttribute('fill', isLight ? '#fef9f3' : '#1a1a2e');
-                }
-            }
-
-            themeToggle.addEventListener('click', () => {
-                document.body.classList.toggle('light');
-                updateThemeIcon();
-                // Update all donut inner circles
-                const innerCircle = document.querySelector('.donut-logo svg circle:nth-child(2)');
-                if (innerCircle) {
-                    const isLight = document.body.classList.contains('light');
-                    innerCircle.setAttribute('fill', isLight ? '#fef9f3' : '#1a1a2e');
-                }
-                showToast(document.body.classList.contains('light') ? '☀️ Light mode — fresh glaze!' :
-                    '🌙 Dark mode — chocolate night!');
-            });
-
-            // ============ LIVE CLOCK & GREETING ============
-            function updateClock() {
-                const now = new Date();
-                const hours = now.getHours();
-                const mins = now.getMinutes().toString().padStart(2, '0');
-                const secs = now.getSeconds().toString().padStart(2, '0');
-                liveTime.textContent = `${hours.toString().padStart(2, '0')}:${mins}:${secs}`;
-
-                let greeting;
-                if (hours < 6) greeting = '🌙 Late night donut craving?';
-                else if (hours < 9) greeting = '🌅 Good morning! Fresh donuts await!';
-                else if (hours < 12) greeting = '☀️ Good morning!';
-                else if (hours < 17) greeting = '🍩 Good afternoon! Treat yourself!';
-                else if (hours < 21) greeting = '🌆 Good evening! Sweet hour!';
-                else greeting = '🌙 Good night! Dream of donuts!';
-                greetingText.textContent = greeting;
-            }
-            updateClock();
-            setInterval(updateClock, 1000);
-
-            // ============ FLOATING SPRINKLES CANVAS ============
-            let sprinkleParticles = [];
-            const sprinkleColors = ['#ffe259', '#56ccf2', '#7bed9f', '#c471ed', '#ff9a56', '#ffffff', '#ff6b9d',
-            '#f7c5cc'];
+            /* ==================== SPRINKLES CANVAS ==================== */
+            var sprinkleParticles = [];
+            var sprinkleColors = ['#ffe259','#56ccf2','#7bed9f','#c471ed','#ff9a56','#ffffff','#ff6b9d','#f7c5cc'];
+            var maxParticles = 55;
 
             function resizeCanvas() {
                 canvas.width = window.innerWidth;
                 canvas.height = window.innerHeight;
+                if (window.innerWidth < 600) maxParticles = 25;
+                else maxParticles = 55;
             }
-            resizeCanvas();
-            window.addEventListener('resize', () => {
-                resizeCanvas();
-                // Keep particles within bounds
-                sprinkleParticles.forEach(p => {
-                    if (p.x > canvas.width) p.x = canvas.width;
-                    if (p.y > canvas.height) p.y = canvas.height;
-                });
-            });
 
             function createSprinkle(x, y) {
-                return {
-                    x: x ?? Math.random() * canvas.width,
-                    y: y ?? Math.random() * canvas.height,
-                    size: Math.random() * 5 + 2,
-                    speedX: (Math.random() - 0.5) * 0.4,
-                    speedY: (Math.random() - 0.5) * 0.4 - 0.3,
-                    color: sprinkleColors[Math.floor(Math.random() * sprinkleColors.length)],
-                    rotation: Math.random() * 360,
-                    rotSpeed: (Math.random() - 0.5) * 2,
-                    opacity: Math.random() * 0.7 + 0.3,
-                    life: Math.random() * 300 + 200,
-                    maxLife: 500,
-                };
-            }
-
-            // Initialize particles
-            for (let i = 0; i < 55; i++) {
-                sprinkleParticles.push(createSprinkle());
+                var p = {};
+                p.x = x !== undefined ? x : Math.random() * canvas.width;
+                p.y = y !== undefined ? y : Math.random() * canvas.height;
+                p.size = Math.random() * 5 + 2;
+                p.speedX = (Math.random() - 0.5) * 0.4;
+                p.speedY = (Math.random() - 0.5) * 0.4 - 0.3;
+                p.color = sprinkleColors[Math.floor(Math.random() * sprinkleColors.length)];
+                p.rotation = Math.random() * 360;
+                p.rotSpeed = (Math.random() - 0.5) * 2;
+                p.opacity = Math.random() * 0.7 + 0.3;
+                p.life = 300 + Math.random() * 200;
+                p.maxLife = p.life;
+                return p;
             }
 
             function spawnBurstSprinkle() {
-                const cx = window.innerWidth / 2 + (Math.random() - 0.5) * 200;
-                const cy = window.innerHeight / 2 + (Math.random() - 0.5) * 150;
-                for (let i = 0; i < 8; i++) {
-                    const p = createSprinkle(cx, cy);
-                    p.speedX = (Math.random() - 0.5) * 3;
-                    p.speedY = (Math.random() - 0.5) * 3 - 1.5;
-                    p.size = Math.random() * 6 + 3;
+                var cx = canvas.width/2 + (Math.random()-0.5)*200;
+                var cy = canvas.height/2 + (Math.random()-0.5)*150;
+                for (var i=0; i<8; i++) {
+                    var p = createSprinkle(cx, cy);
+                    p.speedX = (Math.random()-0.5)*3;
+                    p.speedY = (Math.random()-0.5)*3 - 1.5;
+                    p.size = Math.random()*6+3;
                     p.life = 150;
                     p.maxLife = 150;
                     sprinkleParticles.push(p);
@@ -898,60 +1035,45 @@
 
             function animateSprinkles() {
                 ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-                sprinkleParticles = sprinkleParticles.filter(p => {
+                for (var i = sprinkleParticles.length-1; i >= 0; i--) {
+                    var p = sprinkleParticles[i];
                     p.x += p.speedX;
                     p.y += p.speedY;
                     p.rotation += p.rotSpeed;
                     p.life--;
+                    if (p.x < -20) p.x = canvas.width+20;
+                    if (p.x > canvas.width+20) p.x = -20;
+                    if (p.y < -20) p.y = canvas.height+20;
+                    if (p.y > canvas.height+20) p.y = -20;
 
-                    // Wrap around edges
-                    if (p.x < -20) p.x = canvas.width + 20;
-                    if (p.x > canvas.width + 20) p.x = -20;
-                    if (p.y < -20) p.y = canvas.height + 20;
-                    if (p.y > canvas.height + 20) p.y = -20;
+                    var alpha = p.opacity;
+                    if (p.life < 60) alpha = p.opacity * (p.life/60);
+                    if (alpha < 0) alpha = 0;
 
-                    // Fade out near end of life
-                    let alpha = p.opacity;
-                    if (p.life < 60) alpha = p.opacity * (p.life / 60);
-
-                    // Draw sprinkle
                     ctx.save();
                     ctx.translate(p.x, p.y);
-                    ctx.rotate((p.rotation * Math.PI) / 180);
-                    ctx.globalAlpha = Math.max(0, alpha);
+                    ctx.rotate(p.rotation * Math.PI/180);
+                    ctx.globalAlpha = alpha;
                     ctx.fillStyle = p.color;
-                    // Rounded rectangle sprinkle
-                    const s = p.size;
-                    ctx.beginPath();
-                    ctx.roundRect(-s / 2, -s / 4, s, s / 2, s / 4);
-                    ctx.fill();
+                    fillRoundRect(ctx, -p.size/2, -p.size/4, p.size, p.size/2, p.size/4);
                     ctx.restore();
 
-                    return p.life > 0;
-                });
-
-                // Maintain particle count
-                while (sprinkleParticles.length < 50) {
+                    if (p.life <= 0) {
+                        sprinkleParticles.splice(i,1);
+                    }
+                }
+                while (sprinkleParticles.length < maxParticles) {
                     sprinkleParticles.push(createSprinkle());
                 }
-
-                requestAnimationFrame(animateSprinkles);
-            }
-            animateSprinkles();
-
-            // ============ INIT ============
-            renderCards();
-            updateThemeIcon();
-
-            // Initial inner circle color sync
-            const innerCircle = document.querySelector('.donut-logo svg circle:nth-child(2)');
-            if (innerCircle) {
-                innerCircle.setAttribute('fill', document.body.classList.contains('light') ? '#fef9f3' : '#1a1a2e');
+                requestAnimFrame(animateSprinkles);
             }
 
-            // ============ KEYBOARD SHORTCUT ============
-            document.addEventListener('keydown', (e) => {
+            window.addEventListener('resize', function() {
+                resizeCanvas();
+            });
+
+            /* ==================== KEYBOARD SHORTCUTS ==================== */
+            document.addEventListener('keydown', function(e) {
                 if (e.key === '/' && document.activeElement !== searchInput) {
                     e.preventDefault();
                     searchInput.focus();
@@ -959,20 +1081,34 @@
                 if (e.key === 'Escape') {
                     searchInput.blur();
                     searchInput.value = '';
-                    renderCards();
+                    renderCards('');
                 }
-                // Ctrl+Shift+D for dark/light toggle
                 if (e.ctrlKey && e.shiftKey && e.key === 'D') {
                     e.preventDefault();
-                    themeToggle.click();
+                    toggleTheme();
                 }
             });
+
+            /* ==================== INIT ==================== */
+            resizeCanvas();
+            // init particles
+            for (var i=0; i<maxParticles; i++) {
+                sprinkleParticles.push(createSprinkle());
+            }
+            animateSprinkles();
+            loadTheme();
+            loadLanguage();
+            fetchWeather();
+            showDeviceBadge();
+            updateClock();
+            setInterval(updateClock, 1000);
+            setInterval(fetchWeather, 30*60*1000); // refresh weather every 30 min
+            renderCards('');
 
             console.log('🍩 Donut Club Portal ready!');
             console.log('  Type "/" to search, "Esc" to clear');
             console.log('  Click the donut for surprises!');
             console.log('  Ctrl+Shift+D to toggle theme');
-            console.log('  Enjoy your sweet tools! 🍩');
         })();
     </script>
 </body>
