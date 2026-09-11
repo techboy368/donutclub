@@ -13,7 +13,6 @@ The sweetest community on the internet – built by a 14-year-old developer from
 💻 HTML, CSS, JavaScript, Python, C++ & more  
 
 - **GitHub:** [techboy368](https://github.com/techboy368)  
-- **Codeberg:** [Math12393](https://codeberg.org/Math12393)  
 - **Discord Server:** [Join Donut Club](https://discord.gg/QbgUFz6GaU)  
 - **Email:** [wen471942@gmail.com](mailto:wen471942@gmail.com)
 
@@ -25,24 +24,26 @@ The sweetest community on the internet – built by a 14-year-old developer from
 
 ---
 
-## 🛠️ Other Projects by Wen Zhang
+## 🛠️ Projects by Wen Zhang
 
 | Project | Description | Link |
 |---------|-------------|------|
-| Tom the AI | AI assistant tool | [Visit](https://math12393.codeberg.page/Tom-The-Ai-Download/) |
-| IPA Signer / IPA Editor | iOS IPA signing tool | [Visit](https://math12393.codeberg.page/IPA-SIGNER-WEN/) |
-| OMNI Encoder | Max tools with Base64 | [Visit](https://math12393.codeberg.page/OMNI-ENCODER/) |
-| Universal Extractor | Extract/edit any file in browser | [Visit](https://math12393.codeberg.page/Universal-Extractor/) |
-| NEXUS Architect | Generate README, LICENSE, etc. | [Visit](https://math12393.codeberg.page/Nexus-Architect/) |
-| AI Website Maker | Instant site from HTML code | [Visit](https://math12393.codeberg.page/Ai-Website-Maker/) |
-| Global Chat | Realtime global chat app | [Visit](https://math12393.codeberg.page/global-chat/) |
+| Tom the AI | AI assistant tool | [Visit](https://techperson1234.github.io/tom-the-ai-download/) |
+| IPA Signer / IPA Editor | iOS IPA signing tool | [Visit](https://techperson1234.github.io/IPA-SIGNER-WEN/) |
+| OMNI Encoder | Max tools with Base64 | [Visit](https://techperson1234.github.io/OMNI-ENCODER/) |
+| Universal Extractor | Extract/edit any file in browser | [Visit](https://techperson1234.github.io/Universal-Extractor/) |
+| NEXUS Architect | Generate README, LICENSE, etc. | [Visit](https://techperson1234.github.io/Nexus-Architect/) |
+| AI Website Maker | Instant site from HTML code | [Visit](https://techperson1234.github.io/Ai-Website-Maker/) |
+| Global Chat | Realtime global chat app | [Visit](https://techperson1234.github.io/Global-Chat/) |
+| Internet Speed Test | Check download & upload speed | [Visit](https://techperson1234.github.io/Internet-Speed-Test/) |
+| Donut Forge | My Git site (currently down) | [Visit](https://git.donutclub.site) |
+| Donut VPN | Coming soon – secure & sweet | — |
 
 ---
 
 ## 📁 Project Structure
 
 - `index.html` – Home page
-
 
 ---
 
