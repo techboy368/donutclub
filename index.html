@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>🍩 Donut Club</title>
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
 </head>
 <body onload="
 var projects=[
@@ -14,24 +15,34 @@ var projects=[
 {name:'NEXUS Architect',desc:'Generate README, LICENSE, etc.',link:'https://techperson1234.github.io/Nexus-Architect/',icon:'🏗️'},
 {name:'AI Website Maker',desc:'Instant site from HTML code',link:'https://techperson1234.github.io/Ai-Website-Maker/',icon:'🌐'},
 {name:'Global Chat',desc:'Realtime global chat app',link:'https://techperson1234.github.io/Global-Chat/',icon:'💬'},
+{name:'Internet Speed Test',desc:'Check your download & upload speed',link:'https://techperson1234.github.io/Internet-Speed-Test/',icon:'⚡'},
 {name:'Donut Forge',desc:'My Git site (currently down)',link:'https://git.donutclub.site',icon:'📂',badge:'🔴 down'},
 {name:'Donut VPN',desc:'Coming soon – secure & sweet',link:'#',icon:'🔒',badge:'🚧 coming soon'}
 ];
-var lang='en',tr={en:{subtitle:'🍩 Sweet Tools & Tasty Projects',tagline:'— a freshly baked collection —',footer:'Made with 🍩 & Donut Club',status:'🟢 Online',updated:'Updated June 2026'},es:{subtitle:'🍩 Herramientas Dulces y Proyectos Sabrosos',tagline:'— una colección recién horneada —',footer:'Hecho con 🍩 y Donut Club',status:'🟢 En línea',updated:'Actualizado Junio 2026'}};
+var lang='en',tr={en:{subtitle:'🍩 Sweet Tools & Tasty Projects',tagline:'— a freshly baked collection —',footer:'Made with 🍩 & Donut Club',status:'🟢 Online',updated:'Updated September 2026'},es:{subtitle:'🍩 Herramientas Dulces y Proyectos Sabrosos',tagline:'— una colección recién horneada —',footer:'Hecho con 🍩 y Donut Club',status:'🟢 En línea',updated:'Actualizado Junio 2026'}};
 var quotes=['Donut worry, be happy!','Life is short, eat the donut.','Powered by sprinkles.','You\'re the glaze to my donut.','Donuts: the circle of life.'];
 function render(){var g=document.getElementById('g'),h='';for(var j=0;j<projects.length;j++){var pj=projects[j];h+='<a href=\''+pj.link+'\' target=\'_blank\' style=\'background:#16213e;border-radius:20px;padding:24px 22px;cursor:pointer;text-decoration:none;color:inherit;display:flex;flex-direction:column;gap:10px;border:1.5px solid rgba(255,255,255,0.06);transition:all 0.4s;box-shadow:0 8px 32px rgba(0,0,0,0.4);\' onmouseover=\'this.style.background=\'#1e2d50\';this.style.borderColor=\'rgba(255,107,157,0.4)\';this.style.transform=\'translateY(-6px)\';\' onmouseout=\'this.style.background=\'#16213e\';this.style.borderColor=\'rgba(255,255,255,0.06)\';this.style.transform=\'none\';\'><span style=\'font-size:2.2rem;\'>'+pj.icon+'</span><span style=\'font-weight:700;font-size:1.15rem;color:#f5e6d3;\'>'+pj.name+'</span><span style=\'font-size:0.85rem;color:#a89b8a;\'>'+pj.desc+'</span><span style=\'display:inline-block;font-size:0.75rem;font-weight:600;color:#7bed9f;background:rgba(123,237,159,0.15);padding:2px 8px;border-radius:12px;\'>'+(pj.badge||tr[lang].status)+'</span><span style=\'font-size:0.75rem;color:#ff6b9d;font-weight:600;letter-spacing:1px;text-transform:uppercase;opacity:0;transition:opacity 0.35s;\' onmouseover=\'this.style.opacity=\'1\'\' onmouseout=\'this.style.opacity=\'0\'\'>→ Visit Site</span></a>';}g.innerHTML=h;}
-function setLang(l){lang=l;document.getElementById('sub').textContent=tr[l].subtitle;document.getElementById('tag').textContent=tr[l].tagline;document.getElementById('ftr').textContent=tr[l].footer;document.getElementById('upd').textContent=tr[l].updated;render();}
+function setLang(l){lang=l;document.getElementById('sub').textContent=tr[l].subtitle;document.getElementById('tag').textContent=tr[l].tagline;document.getElementById('ftr').textContent=tr[l].footer;document.getElementById('upd').textContent=tr[l].updated;render();showDate();}
 function clock(){var n=new Date();var h=n.getHours(),m=n.getMinutes().toString(),s=n.getSeconds().toString();if(m.length<2)m='0'+m;if(s.length<2)s='0'+s;document.getElementById('tm').textContent=h+':'+m+':'+s;var g='';if(h<6)g='🌙 Late night donut craving?';else if(h<9)g='🌅 Good morning! Fresh donuts await!';else if(h<12)g='☀️ Good morning!';else if(h<17)g='🍩 Good afternoon! Treat yourself!';else if(h<21)g='🌆 Good evening! Sweet hour!';else g='🌙 Good night! Dream of donuts!';document.getElementById('gr').textContent=g;}
 function quote(){document.getElementById('dq').textContent=quotes[Math.floor(Math.random()*quotes.length)];}
 function randomP(){var f=[];for(var i=0;i<projects.length;i++){f.push(projects[i]);}if(f.length===0){alert(tr[lang].noResults);return;}var r=f[Math.floor(Math.random()*f.length)];alert('🎲 Random pick: '+r.name);window.open(r.link,'_blank');}
 function sharePage(){var u=window.location.href;if(navigator.clipboard){navigator.clipboard.writeText(u).then(function(){alert('🔗 Link copied!');}).catch(function(){prompt('Copy this link:',u);});}else{prompt('Copy this link:',u);}}
 function copyEmail(){var e='wen471942@gmail.com';if(navigator.clipboard){navigator.clipboard.writeText(e).then(function(){alert('📧 Email copied!');}).catch(function(){prompt('Copy email:',e);});}else{prompt('Copy email:',e);}}
 function toggleTheme(){var b=document.body;if(b.className.indexOf('light')>-1){b.className=b.className.replace(' light','');document.getElementById('th').textContent='🌙';document.body.style.background='#1a1a2e';}else{b.className+=' light';document.getElementById('th').textContent='☀️';document.body.style.background='#fef9f3';}}
-function getIP(){var x=new XMLHttpRequest();x.open('GET','https://ipapi.co/json/',true);x.onreadystatechange=function(){if(x.readyState==4&&x.status==200){try{var d=JSON.parse(x.responseText);var ip=d.ip||'unknown';var city=d.city||'Unknown';var region=d.region||'';var country=d.country_name||'Unknown';var loc=city+(region?', '+region:'')+(country?', '+country:'');document.getElementById('ipinfo').textContent='📍 '+ip+' · '+loc;}catch(e){document.getElementById('ipinfo').textContent='📍 IP info unavailable';}}};x.send();}
+function showDate(){var n=new Date();var loc=lang==='es'?'es-ES':'en-US';document.getElementById('today').textContent='📅 '+n.toLocaleDateString(loc,{weekday:'long',year:'numeric',month:'long',day:'numeric'});}
+function wIcon(c){if(c===0)return '☀️';if(c<=2)return '🌤️';if(c===3)return '☁️';if(c<=48)return '🌫️';if(c<=57)return '🌦️';if(c<=67)return '🌧️';if(c<=77)return '🌨️';if(c<=82)return '🌧️';if(c<=86)return '🌨️';if(c>=95)return '⛈️';return '🌡️';}
+function wDesc(c){if(c===0)return 'Clear sky';if(c<=2)return 'Partly cloudy';if(c===3)return 'Overcast';if(c<=48)return 'Foggy';if(c<=57)return 'Drizzle';if(c<=67)return 'Rain';if(c<=77)return 'Snow';if(c<=82)return 'Rain showers';if(c<=86)return 'Snow showers';if(c>=95)return 'Thunderstorm';return 'Unknown';}
+var lat=null,lon=null;
+function getLoc(){var x=new XMLHttpRequest();x.open('GET','https://ipapi.co/json/',true);x.onreadystatechange=function(){if(x.readyState==4){if(x.status==200){try{var d=JSON.parse(x.responseText);var city=d.city||'Unknown';var region=d.region||'';var country=d.country_name||'Unknown';var loc=city+(region?', '+region:'')+(country?', '+country:'');document.getElementById('ipinfo').textContent='📍 '+loc;lat=d.latitude;lon=d.longitude;getWeather();}catch(e){document.getElementById('ipinfo').textContent='📍 Location unavailable';}}else{document.getElementById('ipinfo').textContent='📍 Location unavailable';}}};x.send();}
+function getWeather(){if(lat==null||lon==null)return;var x=new XMLHttpRequest();x.open('GET','https://api.open-meteo.com/v1/forecast?latitude='+lat+'&longitude='+lon+'&current=temperature_2m,weather_code&timezone=auto',true);x.onreadystatechange=function(){if(x.readyState==4){if(x.status==200){try{var d=JSON.parse(x.responseText);var c=d.current;var t=Math.round(c.temperature_2m);document.getElementById('weather').textContent=wIcon(c.weather_code)+' '+t+'°C';document.getElementById('weatherDesc').textContent=wDesc(c.weather_code);}catch(e){document.getElementById('weather').textContent='🌤️ —';document.getElementById('weatherDesc').textContent='Weather unavailable';}}else{document.getElementById('weather').textContent='🌤️ —';document.getElementById('weatherDesc').textContent='Weather unavailable';}}};x.send();}
+function getNews(){var box=document.getElementById('news');var x=new XMLHttpRequest();x.open('GET','https://api.allorigins.win/raw?url='+encodeURIComponent('https://news.google.com/rss?hl=en-US&gl=US&ceid=US:en'),true);x.onreadystatechange=function(){if(x.readyState==4){if(x.status==200){try{var doc=new DOMParser().parseFromString(x.responseText,'text/xml');var it=doc.querySelectorAll('item');var out='';for(var i=0;i<3&&i<it.length;i++){var t=it[i].querySelector('title').textContent;var l=it[i].querySelector('link').textContent;out+='<a class=\'newsItem\' href=\''+l+'\' target=\'_blank\'>📰 '+t+'</a>';}box.innerHTML=out||'<span class=\'newsItem\'>📰 No headlines right now</span>';}catch(e){newsFallback();}}else{newsFallback();}}};x.send();}
+function newsFallback(){var box=document.getElementById('news');var x=new XMLHttpRequest();x.open('GET','https://hacker-news.firebaseio.com/v0/topstories.json',true);x.onreadystatechange=function(){if(x.readyState!=4)return;if(x.status!=200){box.innerHTML='<span class=\'newsItem\'>📰 News unavailable</span>';return;}var ids=JSON.parse(x.responseText).slice(0,3),res=[],done=0;ids.forEach(function(id,i){var y=new XMLHttpRequest();y.open('GET','https://hacker-news.firebaseio.com/v0/item/'+id+'.json',true);y.onreadystatechange=function(){if(y.readyState!=4)return;if(y.status==200){try{var it=JSON.parse(y.responseText);res[i]='<a class=\'newsItem\' href=\'https://news.ycombinator.com/item?id='+id+'\' target=\'_blank\'>📰 '+it.title+'</a>';}catch(e){}}done++;if(done==ids.length){var out=res.filter(function(v){return v;}).join('');box.innerHTML=out||'<span class=\'newsItem\'>📰 News unavailable</span>';}};y.send();});};x.send();}
 var savedLang=localStorage.getItem('donutClubLang');if(savedLang&&tr[savedLang])setLang(savedLang);else setLang('en');
 render();clock();setInterval(clock,1000);quote();setInterval(quote,30000);
+showDate();
 var ua=navigator.userAgent,os='Unknown',br='';if(ua.indexOf('Windows NT 10.0')>-1)os='Win10/11';else if(ua.indexOf('Mac OS X')>-1)os='macOS';else if(ua.indexOf('Android')>-1)os='Android';else if(ua.indexOf('iOS')>-1||ua.indexOf('iPhone')>-1)os='iOS';if(ua.indexOf('Firefox')>-1)br='Firefox';else if(ua.indexOf('Edg')>-1)br='Edge';else if(ua.indexOf('Chrome')>-1&&ua.indexOf('Edg')==-1)br='Chrome';else if(ua.indexOf('Safari')>-1&&ua.indexOf('Chrome')==-1)br='Safari';document.getElementById('dev').textContent=(os=='Android'||os=='iOS'?'📱 ':'🖥️ ')+os+' · '+br;
-getIP();
+getLoc();
+getNews();
 var topBtn=document.getElementById('top');window.onscroll=function(){if(window.pageYOffset>400)topBtn.style.opacity='1';else topBtn.style.opacity='0';};topBtn.onclick=function(){window.scrollTo({top:0,behavior:'smooth'});};
 document.getElementById('rnd').onclick=randomP;
 document.getElementById('share').onclick=sharePage;
@@ -70,15 +81,30 @@ var dc=0;document.getElementById('logo').onclick=function(){dc++;if(dc%5===0){al
 </div></div>
 <div style="text-align:center;margin:10px 0 20px;font-size:1rem;color:#b8a594;letter-spacing:1px;transition:all 0.5s;">
 <span id="gr">Hello!</span> · <span id="tm" style="font-weight:700;color:#ff6b9d;font-size:1.3rem;">00:00:00</span>
-<span id="ipinfo" style="font-weight:600;color:#f7c5cc;margin-left:12px;">📍 loading...</span>
 <span id="dev" style="display:inline-block;margin-left:12px;font-size:0.8rem;color:#b8a594;background:rgba(255,255,255,0.05);padding:3px 10px;border-radius:15px;">Detecting...</span>
+</div>
+<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:16px;margin:6px 0 26px;position:relative;z-index:1;">
+<div class="infoCard">
+<div class="infoLabel">📅 Today</div>
+<div id="today" style="font-size:0.95rem;font-weight:700;color:#f0e6d3;">Loading date…</div>
+<div id="ipinfo" style="font-size:0.82rem;color:#a89b8a;margin-top:8px;font-weight:600;">📍 loading...</div>
+</div>
+<div class="infoCard">
+<div class="infoLabel">🌤️ Weather</div>
+<div id="weather" style="font-size:1.15rem;font-weight:700;color:#f0e6d3;">loading…</div>
+<div id="weatherDesc" style="font-size:0.82rem;color:#a89b8a;margin-top:8px;">—</div>
+</div>
+<div class="infoCard">
+<div class="infoLabel">📰 News</div>
+<div id="news" style="display:flex;flex-direction:column;gap:6px;margin-top:2px;"><span class="newsItem">📰 Loading headlines…</span></div>
+</div>
 </div>
 <div id="g" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:20px;position:relative;z-index:1;"></div>
 <div style="text-align:center;padding:30px 20px 10px;color:#5a4f44;font-size:0.8rem;letter-spacing:1px;position:relative;z-index:1;">
 <span id="ftr">Made with 🍩 & Donut Club</span>
 <a href="mailto:wen471942@gmail.com" style="color:#ff6b9d;text-decoration:none;margin-left:8px;">✉️ wen471942@gmail.com</a>
 <button id="copyEmail" style="background:none;border:none;cursor:pointer;color:#ff6b9d;font-size:0.9rem;margin-left:4px;vertical-align:middle;">📋</button>
-<br><small id="upd">Updated June 2026</small>
+<br><small id="upd">Updated September 2026</small>
 </div></div>
 <button id="th" style="position:fixed;top:20px;right:20px;z-index:100;width:44px;height:44px;border-radius:50%;background:rgba(22,33,62,0.8);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border:2px solid rgba(255,107,157,0.35);cursor:pointer;font-size:1.3rem;display:flex;align-items:center;justify-content:center;transition:all 0.35s;box-shadow:0 4px 16px rgba(0,0,0,0.3);color:#f0e6d3;">🌙</button>
 <select id="langSel" style="position:fixed;top:20px;left:20px;z-index:100;background:rgba(22,33,62,0.8);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border:2px solid rgba(255,107,157,0.35);border-radius:25px;padding:6px 12px;font-size:0.9rem;color:#f0e6d3;cursor:pointer;box-shadow:0 4px 16px rgba(0,0,0,0.3);outline:none;-webkit-appearance:none;appearance:none;">
@@ -92,8 +118,18 @@ body{background:#1a1a2e;margin:0;padding:0;font-family:'Segoe UI','Poppins',sans
 @-webkit-keyframes floatDonut{0%,100%{-webkit-transform:translateY(0px);}30%{-webkit-transform:translateY(-18px);}60%{-webkit-transform:translateY(-6px);}85%{-webkit-transform:translateY(-14px);}}
 @keyframes gradientShift{0%,100%{background-position:0% 50%;}25%{background-position:100% 0%;}50%{background-position:100% 100%;}75%{background-position:0% 100%;}}
 @-webkit-keyframes gradientShift{0%,100%{background-position:0% 50%;}25%{background-position:100% 0%;}50%{background-position:100% 100%;}75%{background-position:0% 100%;}}
+.infoCard{background:rgba(22,33,62,0.55);border:1.5px solid rgba(255,255,255,0.06);border-radius:18px;padding:16px 18px;box-shadow:0 8px 32px rgba(0,0,0,0.25);transition:all 0.35s;text-align:left;}
+.infoCard:hover{border-color:rgba(255,107,157,0.3);transform:translateY(-3px);}
+.infoLabel{font-size:0.68rem;letter-spacing:1.6px;text-transform:uppercase;color:#ff6b9d;font-weight:800;margin-bottom:10px;}
+.newsItem{display:block;font-size:0.82rem;color:#c9b8a8;text-decoration:none;padding:6px 10px;border-radius:10px;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.06);transition:all 0.3s;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+.newsItem:hover{background:rgba(255,107,157,0.12);border-color:rgba(255,107,157,0.35);color:#f5e6d3;transform:translateX(4px);}
 body.light{background:#fef9f3!important;color:#3d2c1e!important;}
 body.light #sub{color:#7a6a5c;}body.light #tag{color:#a09080;}body.light #dq{color:#c4728a;}body.light #gr,body.light #ipinfo,body.light #dev{color:#8a7a6a;}body.light #tm{color:#e0557a;}body.light #ftr{color:#a09080;}body.light .footer a{color:#e0557a;}body.light #top{background:rgba(255,255,255,0.7);border-color:rgba(255,107,157,0.3);color:#3d2c1e;}body.light #th{background:rgba(255,255,255,0.7);border-color:rgba(255,107,157,0.3);color:#3d2c1e;}body.light #langSel{background:rgba(255,255,255,0.7);border-color:rgba(255,107,157,0.3);color:#3d2c1e;}body.light #rnd,body.light #share,body.light a[href='https://discord.gg/BVXUXSWNBN']{background:rgba(255,255,255,0.7)!important;border-color:rgba(255,107,157,0.3)!important;color:#3d2c1e!important;}
+body.light .infoCard{background:rgba(255,255,255,0.8);border-color:rgba(0,0,0,0.07);box-shadow:0 8px 28px rgba(0,0,0,0.08);}
+body.light #today,body.light #weather{color:#3d2c1e!important;}
+body.light #weatherDesc{color:#7a6a5c;}
+body.light .newsItem{background:rgba(0,0,0,0.03);border-color:rgba(0,0,0,0.06);color:#7a6a5c;}
+body.light .newsItem:hover{background:rgba(255,107,157,0.12);border-color:rgba(255,107,157,0.3);color:#3d2c1e;}
 body.light a[style*='background:#16213e']{background:#ffffff!important;box-shadow:0 8px 28px rgba(0,0,0,0.08)!important;}
 body.light a[style*='background:#16213e']:hover{background:#fff5ee!important;box-shadow:0 16px 40px rgba(0,0,0,0.1),0 0 40px rgba(255,107,157,0.2)!important;}
 body.light a[style*='background:#16213e'] span[style*='color:#f5e6d3']{color:#3d2c1e!important;}
